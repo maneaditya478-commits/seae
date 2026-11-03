@@ -45,7 +45,7 @@
       "kernel": "threshold",
       "size": "256x256",
       "naive_python": {
-        "display": "145.550 +/- 0.000 ms (n=5)",
+        "display": "145.550 ms (n=5, std not recorded)",
         "mean_ms": 145.54990000033285,
         "std_ms": 0.0
       },
@@ -231,7 +231,7 @@
       "kernel": "gaussian_blur",
       "size": "256x256",
       "naive_python": {
-        "display": "676.310 +/- 0.000 ms (n=5)",
+        "display": "676.310 ms (n=5, std not recorded)",
         "mean_ms": 676.3095000060275,
         "std_ms": 0.0
       },
@@ -417,7 +417,7 @@
       "kernel": "sobel",
       "size": "256x256",
       "naive_python": {
-        "display": "185.231 +/- 0.000 ms (n=5)",
+        "display": "185.231 ms (n=5, std not recorded)",
         "mean_ms": 185.23129999812227,
         "std_ms": 0.0
       },
@@ -603,7 +603,7 @@
       "kernel": "conv2d",
       "size": "256x256",
       "naive_python": {
-        "display": "254.090 +/- 0.000 ms (n=5)",
+        "display": "254.090 ms (n=5, std not recorded)",
         "mean_ms": 254.09010000294074,
         "std_ms": 0.0
       },
@@ -789,7 +789,7 @@
       "kernel": "fused_contrast_blur",
       "size": "256x256",
       "naive_python": {
-        "display": "1040.624 +/- 0.000 ms (n=5)",
+        "display": "1040.624 ms (n=5, std not recorded)",
         "mean_ms": 1040.6235999980709,
         "std_ms": 0.0
       },

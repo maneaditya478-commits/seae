@@ -456,9 +456,13 @@ from numba import njit
 def _nb_sobel_tiled(padded, h, w):
     out = np.zeros((h, w), dtype=np.float32)
     block = {tiling}
-    for bi in {loop_fn}(0, h, block):
-        for bj in range(0, w, block):
-            i_max = min(bi + block, h)
+    n_bi = (h + block - 1) // block
+    n_bj = (w + block - 1) // block
+    for bi_idx in {loop_fn}(n_bi):
+        bi = bi_idx * block
+        i_max = min(bi + block, h)
+        for bj_idx in range(n_bj):
+            bj = bj_idx * block
             j_max = min(bj + block, w)
             for i in range(bi, i_max):
                 for j in range(bj, j_max):

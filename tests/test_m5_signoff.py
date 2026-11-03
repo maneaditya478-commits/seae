@@ -238,3 +238,37 @@ def test_recomputed_arithmetic_speedup_breakeven_regret_match_readme():
                     assert regret_str in readme_text, f"Signed regret {regret_str} missing in README for {s_name}"
 
 
+def test_tiled_numba_sobel_variant_matches_reference_within_tolerance(tmp_path):
+    """Verify that the tiled Numba Sobel variant (with step-1 prange fix) passes verification and matches reference."""
+    import importlib.util
+    from seae.references import ref_sobel
+
+    gen = CandidateGenerator(seed=42)
+    cfg = KernelConfig(backend="numba", fastmath=True, parallel=True, tiling=32)
+    cand = gen.generate_candidate("sobel", cfg)
+
+    # 1. Verification battery check via sandbox
+    spec = TaskAnalyzer.analyze("sobel", size_str="256x256")
+    verifier = Verifier()
+    rep = verifier.verify_candidate(cand.candidate_id, cand.source_code, spec)
+    assert rep.all_passed, f"Tiled Sobel candidate failed verification: {rep.rejection_reason}"
+
+    # 2. Direct execution and numeric comparison against reference kernel
+    cand_file = tmp_path / "cand_tiled_sobel.py"
+    cand_file.write_text(cand.source_code, encoding="utf-8")
+
+    spec_import = importlib.util.spec_from_file_location("cand_tiled_sobel", str(cand_file))
+    mod = importlib.util.module_from_spec(spec_import)
+    spec_import.loader.exec_module(mod)
+
+    img = np.random.RandomState(42).randint(0, 256, (256, 256), dtype=np.uint8)
+    ref_out = ref_sobel(img)
+    cand_out = mod.kernel_entry(img)
+
+    assert cand_out.shape == ref_out.shape
+    assert cand_out.dtype == ref_out.dtype
+    mae = float(np.mean(np.abs(cand_out.astype(np.float64) - ref_out.astype(np.float64))))
+    assert mae <= 2.0, f"MAE {mae} exceeded tolerance 2.0"
+
+
+

@@ -1,6 +1,7 @@
 # Virtual Environments
 .venv/
 test_fresh_venv/
+test_fresh_repro_venv/
 
 # Python cache & artifacts
 __pycache__/
@@ -9,6 +10,11 @@ __pycache__/
 *.pyd
 .pytest_cache/
 .mplconfig/
+
+# Numba cache
+.numba_cache/
+*.nbc
+*.nbi
 
 # SQLite databases
 *.db

@@ -8,6 +8,19 @@
 
 ---
 
+## Status and Limitations
+
+> [!WARNING]
+> **Important Project Status and Research Boundaries**:
+> - **Research prototype, not production software**: SEAE is an exploratory research runtime exploring continuous search and kernel synthesis; it is not hardened for production environments.
+> - **Single-Machine Hardware Specificity**: All results and measurements reported in this repository originate from a single Windows laptop (AMD Ryzen 7 5800H, 8 physical cores, 16 threads, AVX2). They may not generalize to other hardware.
+> - **Sandbox Isolation Boundary**: The subprocess sandbox provides execution isolation for prototype benchmarking (timeout enforcement, peak RSS monitoring, and basic network socket blocking). It is an engineering harness against accidental infinite loops and memory leaks, **not a security boundary**.
+> - **No Energy Measurements**: Hardware RAPL (Running Average Power Limit) energy counters are unavailable on Microsoft Windows host platforms without vendor-signed kernel drivers. Energy consumption figures are omitted rather than simulated.
+> - **Automated Promotion Warning (--auto-approve)**: The `--auto-approve` CLI flag skips human review of generated code; do not use it with untrusted input.
+> - **Preliminary Search Strategy Comparisons**: The search-strategy comparison (random vs bandit vs evolutionary search) is preliminary: only 5 seeds, small budgets (12 evaluations), and noisy timings.
+
+---
+
 ## Architecture Overview
 
 ```mermaid
@@ -261,13 +274,45 @@ python -m seae rollback --kernel sobel --size 256x256
 
 ---
 
+## How to Reproduce
+
+To reproduce the benchmark results, unit tests, and validation matrix on your machine:
+
+```powershell
+# 1. Clone the repository
+git clone https://github.com/maneaditya478-commits/seae.git
+cd seae
+
+# 2. Create and activate a clean virtual environment
+python -m venv .venv
+# On Windows:
+.venv/Scripts/activate
+# On Linux/macOS:
+source .venv/bin/activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Run the full pytest suite (46 tests)
+pytest -v
+
+# 5. Run the comprehensive benchmark suite
+# (Evaluates 15 matrix cells, ABBA interleaved runs, and 486-config space)
+python run_benchmarks.py
+
+# 6. (Optional) Regenerate chart and README from benchmark_raw_results.json without re-running:
+python run_benchmarks.py --report-only
+```
+
+---
+
 ## Empirical Benchmark Results
 
 All figures below are empirically measured and automatically generated from `benchmark_raw_results.json`. No values are hand-edited or estimated.
 
 > [!IMPORTANT]
 > **Key Empirical Takeaways**:
-> - **Sobel 256x256 is the ONLY verified win** across the entire matrix (0.226 ms vs 0.513 ms, speedup: **2.27x**, break-even: **73,013 calls**, equivalent to **40.6 min (0.68 hrs)**).
+> - **Sobel 256x256 is the ONLY verified win** across the entire matrix (0.226 ms vs 0.513 ms, speedup: **2.27x** (range: **1.95x–2.90x** across passes R1–R3), break-even: **73,013 calls**, equivalent to **40.6 min (0.68 hrs)**).
 > - **Sobel 1920x1080 Replication**: Tested across 3 full independent replication passes; native OpenCV consistently outperforms Numba ($13.45\text{ to }15.83\text{ ms}$ vs $16.71\text{ to }19.21\text{ ms}$). Under strict promotion rules, OpenCV baseline is retained.
 > - In all other cells, native OpenCV proved superior or equal within standard deviation. SEAE selected OpenCV baseline with speedup **1.00x**, compile time **0.0 ms**, and break-even **'N/A'**.
 
@@ -297,21 +342,28 @@ Tested across identical dimensions: $256 \times 256$, $1024 \times 1024$, and $1
 
 | Kernel | Resolution | Naive Python ($\mu \pm \sigma$) | NumPy ($\mu \pm \sigma$) | Native OpenCV ($\mu \pm \sigma$, 3 Passes) | OpenCV Spread | SEAE Selected (Latency & Implementation) | Speedup | Total Search | Verification | Compile | Break-Even Calls | 30 FPS Stream Equivalent |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **threshold** | 256x256 | 145.550 +/- 0.000 ms (n=5) | 0.143 +/- 0.032 ms | 0.005 +/- 0.001 ms | 19.9% | **0.005 +/- 0.001 ms** `[OpenCV baseline]` | 1.00x | 10.21 s | 4.47 s | 0.0 ms | N/A | N/A |
-| **threshold** | 1024x1024 | Omitted (>256x256) | 4.466 +/- 0.607 ms | 0.261 +/- 0.040 ms | 26.7% | **0.261 +/- 0.040 ms** `[OpenCV baseline]` | 1.00x | 6.07 s | 0.00 s | 0.0 ms | N/A | N/A |
-| **threshold** | 1920x1080 | Omitted (>256x256) | 13.266 +/- 0.522 ms | 0.448 +/- 0.077 ms | 34.0% | **0.448 +/- 0.077 ms** `[OpenCV baseline]` | 1.00x | 6.26 s | 0.00 s | 0.0 ms | N/A | N/A |
-| **gaussian_blur** | 256x256 | 676.310 +/- 0.000 ms (n=5) | 1.062 +/- 0.110 ms | 0.051 +/- 0.002 ms | 6.4% | **0.051 +/- 0.002 ms** `[OpenCV baseline]` | 1.00x | 12.65 s | 4.22 s | 0.0 ms | N/A | N/A |
-| **gaussian_blur** | 1024x1024 | Omitted (>256x256) | 60.368 +/- 1.192 ms | 0.539 +/- 0.149 ms | 55.1% | **0.539 +/- 0.149 ms** `[OpenCV baseline]` | 1.00x | 9.32 s | 0.00 s | 0.0 ms | N/A | N/A |
-| **gaussian_blur** | 1920x1080 | Omitted (>256x256) | 105.467 +/- 18.698 ms | 0.801 +/- 0.151 ms | 33.5% | **0.801 +/- 0.151 ms** `[OpenCV baseline]` | 1.00x | 10.13 s | 0.00 s | 0.0 ms | N/A | N/A |
-| **sobel** | 256x256 | 185.231 +/- 0.000 ms (n=5) | 1.487 +/- 0.256 ms | 0.513 +/- 0.123 ms | 41.6% | **0.226 +/- 0.008 ms** `[Numba Sequential]` | 2.27x | 20.29 s | 10.45 s | 671.8 ms | **73,013 calls** | **40.6 min (0.68 hrs)** |
-| **sobel** | 1024x1024 | Omitted (>256x256) | 34.736 +/- 2.111 ms | 5.817 +/- 0.584 ms | 18.3% | **5.817 +/- 0.584 ms** `[OpenCV baseline]` | 1.00x | 10.50 s | 0.00 s | 0.0 ms | N/A | N/A |
-| **sobel** | 1920x1080 | Omitted (>256x256) | 68.520 +/- 2.604 ms | 13.124 +/- 2.135 ms | 29.4% | **13.124 +/- 2.135 ms** `[OpenCV baseline]` | 1.00x | 11.23 s | 0.00 s | 0.0 ms | N/A | N/A |
-| **conv2d** | 256x256 | 254.090 +/- 0.000 ms (n=5) | 0.684 +/- 0.007 ms | 0.276 +/- 0.007 ms | 5.1% | **0.276 +/- 0.007 ms** `[OpenCV baseline]` | 1.00x | 11.03 s | 5.01 s | 0.0 ms | N/A | N/A |
-| **conv2d** | 1024x1024 | Omitted (>256x256) | 16.189 +/- 0.740 ms | 4.355 +/- 0.603 ms | 27.4% | **4.355 +/- 0.603 ms** `[OpenCV baseline]` | 1.00x | 6.60 s | 0.00 s | 0.0 ms | N/A | N/A |
-| **conv2d** | 1920x1080 | Omitted (>256x256) | 34.710 +/- 0.387 ms | 9.439 +/- 0.690 ms | 14.5% | **9.439 +/- 0.690 ms** `[OpenCV baseline]` | 1.00x | 6.95 s | 0.00 s | 0.0 ms | N/A | N/A |
-| **fused_contrast_blur** | 256x256 | 1040.624 +/- 0.000 ms (n=5) | 1.300 +/- 0.104 ms | 0.071 +/- 0.001 ms | 1.9% | **0.071 +/- 0.001 ms** `[OpenCV baseline]` | 1.00x | 14.93 s | 6.96 s | 0.0 ms | N/A | N/A |
+| **threshold** | 256x256 | 145.550 ms (n=5, std not recorded) | 0.143 +/- 0.032 ms | 0.005 +/- 0.001 ms | 19.9% *(unstable)* | **0.005 +/- 0.001 ms** `[OpenCV baseline]` | 1.00x | 10.21 s | 4.47 s | 0.0 ms | N/A | N/A |
+| **threshold** | 1024x1024 | Omitted (>256x256) | 4.466 +/- 0.607 ms | 0.261 +/- 0.040 ms | 26.7% *(unstable)* | **0.261 +/- 0.040 ms** `[OpenCV baseline]` | 1.00x | 6.07 s | 0.00 s | 0.0 ms | N/A | N/A |
+| **threshold** | 1920x1080 | Omitted (>256x256) | 13.266 +/- 0.522 ms | 0.448 +/- 0.077 ms | 34.0% *(unstable)* | **0.448 +/- 0.077 ms** `[OpenCV baseline]` | 1.00x | 6.26 s | 0.00 s | 0.0 ms | N/A | N/A |
+| **gaussian_blur** | 256x256 | 676.310 ms (n=5, std not recorded) | 1.062 +/- 0.110 ms | 0.051 +/- 0.002 ms | 6.4% | **0.051 +/- 0.002 ms** `[OpenCV baseline]` | 1.00x | 12.65 s | 4.22 s | 0.0 ms | N/A | N/A |
+| **gaussian_blur** | 1024x1024 | Omitted (>256x256) | 60.368 +/- 1.192 ms | 0.539 +/- 0.149 ms | 55.1% *(unstable)* | **0.539 +/- 0.149 ms** `[OpenCV baseline]` | 1.00x | 9.32 s | 0.00 s | 0.0 ms | N/A | N/A |
+| **gaussian_blur** | 1920x1080 | Omitted (>256x256) | 105.467 +/- 18.698 ms | 0.801 +/- 0.151 ms | 33.5% *(unstable)* | **0.801 +/- 0.151 ms** `[OpenCV baseline]` | 1.00x | 10.13 s | 0.00 s | 0.0 ms | N/A | N/A |
+| **sobel** | 256x256 | 185.231 ms (n=5, std not recorded) | 1.487 +/- 0.256 ms | 0.513 +/- 0.123 ms | 41.6% *(unstable)* | **0.226 +/- 0.008 ms** `[Numba Sequential]` | 2.27x | 20.29 s | 10.45 s | 671.8 ms | **73,013 calls** | **40.6 min (0.68 hrs)** |
+| **sobel** | 1024x1024 | Omitted (>256x256) | 34.736 +/- 2.111 ms | 5.817 +/- 0.584 ms | 18.3% *(unstable)* | **5.817 +/- 0.584 ms** `[OpenCV baseline]` | 1.00x | 10.50 s | 0.00 s | 0.0 ms | N/A | N/A |
+| **sobel** | 1920x1080 | Omitted (>256x256) | 68.520 +/- 2.604 ms | 13.124 +/- 2.135 ms | 29.4% *(unstable)* | **13.124 +/- 2.135 ms** `[OpenCV baseline]` | 1.00x | 11.23 s | 0.00 s | 0.0 ms | N/A | N/A |
+| **conv2d** | 256x256 | 254.090 ms (n=5, std not recorded) | 0.684 +/- 0.007 ms | 0.276 +/- 0.007 ms | 5.1% | **0.276 +/- 0.007 ms** `[OpenCV baseline]` | 1.00x | 11.03 s | 5.01 s | 0.0 ms | N/A | N/A |
+| **conv2d** | 1024x1024 | Omitted (>256x256) | 16.189 +/- 0.740 ms | 4.355 +/- 0.603 ms | 27.4% *(unstable)* | **4.355 +/- 0.603 ms** `[OpenCV baseline]` | 1.00x | 6.60 s | 0.00 s | 0.0 ms | N/A | N/A |
+| **conv2d** | 1920x1080 | Omitted (>256x256) | 34.710 +/- 0.387 ms | 9.439 +/- 0.690 ms | 14.5% *(unstable)* | **9.439 +/- 0.690 ms** `[OpenCV baseline]` | 1.00x | 6.95 s | 0.00 s | 0.0 ms | N/A | N/A |
+| **fused_contrast_blur** | 256x256 | 1040.624 ms (n=5, std not recorded) | 1.300 +/- 0.104 ms | 0.071 +/- 0.001 ms | 1.9% | **0.071 +/- 0.001 ms** `[OpenCV baseline]` | 1.00x | 14.93 s | 6.96 s | 0.0 ms | N/A | N/A |
 | **fused_contrast_blur** | 1024x1024 | Omitted (>256x256) | 41.769 +/- 3.744 ms | 0.932 +/- 0.033 ms | 6.7% | **0.932 +/- 0.033 ms** `[OpenCV baseline]` | 1.00x | 8.62 s | 0.00 s | 0.0 ms | N/A | N/A |
-| **fused_contrast_blur** | 1920x1080 | Omitted (>256x256) | 90.629 +/- 7.709 ms | 1.536 +/- 0.140 ms | 18.0% | **1.536 +/- 0.140 ms** `[OpenCV baseline]` | 1.00x | 9.31 s | 0.00 s | 0.0 ms | N/A | N/A |
+| **fused_contrast_blur** | 1920x1080 | Omitted (>256x256) | 90.629 +/- 7.709 ms | 1.536 +/- 0.140 ms | 18.0% *(unstable)* | **1.536 +/- 0.140 ms** `[OpenCV baseline]` | 1.00x | 9.31 s | 0.00 s | 0.0 ms | N/A | N/A |
+
+
+> [!NOTE]
+> **Explanation of Verification Time: 0.00 s at 1024x1024 and 1920x1080**:
+> - Correctness verification in SEAE executes a standardized 6-test suite using resolution-independent synthetic inputs (48x48) to verify algorithmic correctness (MAE, PSNR, dtype matching).
+> - Verification reports are cached in memory by `(kernel_name, code_str)`. Because candidates evaluated at $1024 \times 1024$ and $1920 \times 1080$ share identical implementation source code with those verified at $256 \times 256$, they hit the verification cache in $< 0.02\text{ ms}$, recorded as **0.00 s**.
+> - If verified cold without caching, measured verification takes between **4.22 s and 10.45 s** per candidate pool (as documented in the 256x256 rows). The remaining search time ($6\text{–}11\text{ s}$) in these rows is spent exclusively on multi-pass baseline benchmarking and JIT-compiling and benchmarking candidates at the larger resolution.
 
 ### Exact Arithmetic Inputs and Proof: Sobel 256x256 Row
 
@@ -320,7 +372,7 @@ The following exact arithmetic inputs and formulas are empirically verified for 
 - **Baseline Latency (Native OpenCV)**: baseline_ms = 0.5131 ms
 - **Selected Candidate Latency (Numba Sequential)**: selected_ms = 0.2260 ms
 - **Per-Call Runtime Savings**: savings_ms = 0.5131 - 0.2260 = 0.2871 ms
-- **Speedup Ratio**: baseline_ms / selected_ms = 0.5131 / 0.2260 = **2.27x**
+- **Speedup Ratio**: baseline_ms / selected_ms = 0.5131 / 0.2260 = **2.27x** (range: **1.95x–2.90x** across recorded baseline passes R1: 0.4417 ms, R2: 0.6552 ms, R3: 0.4425 ms)
 - **Total Search Wall Time**: search_s = 20.29 s
 - **JIT Warmup Compilation Overhead**: compile_ms = 671.8 ms (0.6718 s)
 - **Total Search & Compilation Cost**: (search_s + compile_s) * 1000 = (20.29 + 0.6718) * 1000 = 20965.0 ms
