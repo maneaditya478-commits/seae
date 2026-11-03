@@ -1,0 +1,10 @@
+strategy,budget,mean_search_s,std_search_s,mean_latency_ms,std_latency_ms,mean_speedup,sample_winner
+Random Search,6,24.14,9.74,0.3462,0.0769,2.19,sobel_numba_0006
+Bandit Search,6,13.31,9.30,0.4376,0.0736,1.37,sobel_opencv_0001
+Evolutionary Search,6,25.35,7.44,0.3923,0.0706,1.92,sobel_numba_0005
+Random Search,24,103.88,14.38,0.3215,0.0415,2.31,sobel_numba_0009
+Bandit Search,24,54.38,13.43,0.3583,0.0380,2.05,sobel_numba_0010
+Evolutionary Search,24,79.70,18.83,0.3220,0.0418,2.30,sobel_numba_0024
+Random Search,96,426.34,21.69,0.3123,0.0415,2.37,sobel_numba_0009
+Bandit Search,96,206.43,12.78,0.3401,0.0000,2.14,sobel_numba_0010
+Evolutionary Search,96,301.44,41.21,0.2900,0.0461,2.56,sobel_numba_0083

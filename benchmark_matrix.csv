@@ -1,0 +1,16 @@
+kernel,resolution,naive_python,numpy_ms,opencv_ms,opencv_spread_pct,seae_selected_impl,seae_latency_ms,speedup_vs_opencv,search_wall_clock_s,verification_s,compile_ms,break_even_calls,break_even_30fps
+threshold,256x256,145.550 +/- 0.000 ms (n=5),0.143,0.005 +/- 0.001,19.9%,OpenCV baseline,0.005,1.00,10.21,4.47,0.0,N/A,N/A
+threshold,1024x1024,Omitted (>256x256),4.466,0.261 +/- 0.040,26.7%,OpenCV baseline,0.261,1.00,6.07,0.00,0.0,N/A,N/A
+threshold,1920x1080,Omitted (>256x256),13.266,0.448 +/- 0.077,34.0%,OpenCV baseline,0.448,1.00,6.26,0.00,0.0,N/A,N/A
+gaussian_blur,256x256,676.310 +/- 0.000 ms (n=5),1.062,0.051 +/- 0.002,6.4%,OpenCV baseline,0.051,1.00,12.65,4.22,0.0,N/A,N/A
+gaussian_blur,1024x1024,Omitted (>256x256),60.368,0.539 +/- 0.149,55.1%,OpenCV baseline,0.539,1.00,9.32,0.00,0.0,N/A,N/A
+gaussian_blur,1920x1080,Omitted (>256x256),105.467,0.801 +/- 0.151,33.5%,OpenCV baseline,0.801,1.00,10.13,0.00,0.0,N/A,N/A
+sobel,256x256,185.231 +/- 0.000 ms (n=5),1.487,0.513 +/- 0.123,41.6%,Numba Sequential,0.226,2.27,20.29,10.45,671.8,"73,013 calls",40.6 min (0.68 hrs)
+sobel,1024x1024,Omitted (>256x256),34.736,5.817 +/- 0.584,18.3%,OpenCV baseline,5.817,1.00,10.50,0.00,0.0,N/A,N/A
+sobel,1920x1080,Omitted (>256x256),68.520,13.124 +/- 2.135,29.4%,OpenCV baseline,13.124,1.00,11.23,0.00,0.0,N/A,N/A
+conv2d,256x256,254.090 +/- 0.000 ms (n=5),0.684,0.276 +/- 0.007,5.1%,OpenCV baseline,0.276,1.00,11.03,5.01,0.0,N/A,N/A
+conv2d,1024x1024,Omitted (>256x256),16.189,4.355 +/- 0.603,27.4%,OpenCV baseline,4.355,1.00,6.60,0.00,0.0,N/A,N/A
+conv2d,1920x1080,Omitted (>256x256),34.710,9.439 +/- 0.690,14.5%,OpenCV baseline,9.439,1.00,6.95,0.00,0.0,N/A,N/A
+fused_contrast_blur,256x256,1040.624 +/- 0.000 ms (n=5),1.300,0.071 +/- 0.001,1.9%,OpenCV baseline,0.071,1.00,14.93,6.96,0.0,N/A,N/A
+fused_contrast_blur,1024x1024,Omitted (>256x256),41.769,0.932 +/- 0.033,6.7%,OpenCV baseline,0.932,1.00,8.62,0.00,0.0,N/A,N/A
+fused_contrast_blur,1920x1080,Omitted (>256x256),90.629,1.536 +/- 0.140,18.0%,OpenCV baseline,1.536,1.00,9.31,0.00,0.0,N/A,N/A

@@ -1,0 +1,1163 @@
+{
+  "metadata": {
+    "timestamp": "2026-11-03T17:59:31",
+    "versions": {
+      "python": "3.13.0",
+      "numpy": "2.3.5",
+      "opencv": "5.0.0",
+      "numba": "0.68.1"
+    },
+    "hardware": {
+      "fingerprint": "AMD64-Family-25-Model-80-Stepping-0-AuthenticAMD-8p16c-AVX2",
+      "cpu_model": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+      "physical_cores": 8,
+      "logical_cores": 16,
+      "cpu_freq_mhz": 3201.0,
+      "power_plan": "Legion Balance Mode",
+      "power_plugged": true,
+      "battery_percent": 58,
+      "simd_features": [
+        "AVX",
+        "AVX2",
+        "F16C",
+        "FMA3",
+        "FP16",
+        "MMX",
+        "POPCNT",
+        "SSE",
+        "SSE2",
+        "SSE3",
+        "SSE4.1",
+        "SSE4.2",
+        "SSSE3"
+      ]
+    },
+    "threads": 8,
+    "opencv_thread_baselines_sobel_256": {
+      "threads_1_ms": 0.4635700024664402,
+      "threads_1_std": 0.056076592517153474,
+      "threads_8_ms": 0.729400001000613,
+      "threads_8_std": 0.18254701232898288
+    }
+  },
+  "matrix": [
+    {
+      "kernel": "threshold",
+      "size": "256x256",
+      "naive_python": {
+        "display": "145.550 +/- 0.000 ms (n=5)",
+        "mean_ms": 145.54990000033285,
+        "std_ms": 0.0
+      },
+      "numpy": {
+        "mean_ms": 0.14302000345196575,
+        "std_ms": 0.03236590651109245
+      },
+      "opencv": {
+        "mean_ms": 0.005019999419649442,
+        "std_ms": 0.0005414796005169264,
+        "min_ms": 0.004639997496269643,
+        "max_ms": 0.005639999289996922,
+        "spread_pct": 19.920356759664948,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_threshold_256x256_21327",
+            "timestamp": "2026-11-03T17:48:41.327861",
+            "mean_ms": 0.004780001472681761,
+            "std_ms": 0.0005540745108099835
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_threshold_256x256_22298",
+            "timestamp": "2026-11-03T17:48:42.298692",
+            "mean_ms": 0.004639997496269643,
+            "std_ms": 0.0007668113467112765
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_threshold_256x256_23291",
+            "timestamp": "2026-11-03T17:48:43.291280",
+            "mean_ms": 0.005639999289996922,
+            "std_ms": 0.0008018693863431245
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "threshold_opencv_0003",
+        "winner_mean_ms": 0.005019999419649442,
+        "winner_std_ms": 0.0005414796005169264,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 10.211907699995209,
+        "search_breakdown": {
+          "total_wall_s": 10.211907699995209,
+          "verification_s": 4.474517700014985,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "threshold",
+      "size": "1024x1024",
+      "naive_python": {
+        "display": "Omitted (>256x256)",
+        "mean_ms": null,
+        "std_ms": null
+      },
+      "numpy": {
+        "mean_ms": 4.466239997418597,
+        "std_ms": 0.6070670699193891
+      },
+      "opencv": {
+        "mean_ms": 0.261460001153561,
+        "std_ms": 0.03979345053793011,
+        "min_ms": 0.2155200025299564,
+        "max_ms": 0.2852400008123368,
+        "spread_pct": 26.66564597826662,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_threshold_1024x1024_35406",
+            "timestamp": "2026-11-03T17:48:55.406549",
+            "mean_ms": 0.2852400008123368,
+            "std_ms": 0.019543873294147432
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_threshold_1024x1024_36417",
+            "timestamp": "2026-11-03T17:48:56.417641",
+            "mean_ms": 0.2836200001183897,
+            "std_ms": 0.06923357057361426
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_threshold_1024x1024_37423",
+            "timestamp": "2026-11-03T17:48:57.423035",
+            "mean_ms": 0.2155200025299564,
+            "std_ms": 0.01527275093995492
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "threshold_opencv_0008",
+        "winner_mean_ms": 0.261460001153561,
+        "winner_std_ms": 0.03979345053793011,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 6.0729981000040425,
+        "search_breakdown": {
+          "total_wall_s": 6.0729981000040425,
+          "verification_s": 1.6699996194802225e-05,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "threshold",
+      "size": "1920x1080",
+      "naive_python": {
+        "display": "Omitted (>256x256)",
+        "mean_ms": null,
+        "std_ms": null
+      },
+      "numpy": {
+        "mean_ms": 13.265840001986362,
+        "std_ms": 0.5224988382761924
+      },
+      "opencv": {
+        "mean_ms": 0.44753999973181635,
+        "std_ms": 0.07675696552192403,
+        "min_ms": 0.36589999799616635,
+        "max_ms": 0.5182399996556342,
+        "spread_pct": 34.03941586243821,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_threshold_1920x1080_45549",
+            "timestamp": "2026-11-03T17:49:05.549392",
+            "mean_ms": 0.45848000154364854,
+            "std_ms": 0.06678496953083908
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_threshold_1920x1080_46629",
+            "timestamp": "2026-11-03T17:49:06.629502",
+            "mean_ms": 0.36589999799616635,
+            "std_ms": 0.021490814392061897
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_threshold_1920x1080_47635",
+            "timestamp": "2026-11-03T17:49:07.635664",
+            "mean_ms": 0.5182399996556342,
+            "std_ms": 0.15289876597040458
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "threshold_opencv_0012",
+        "winner_mean_ms": 0.44753999973181635,
+        "winner_std_ms": 0.07675696552192403,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 6.261082500001066,
+        "search_breakdown": {
+          "total_wall_s": 6.261082500001066,
+          "verification_s": 1.920001523103565e-05,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "gaussian_blur",
+      "size": "256x256",
+      "naive_python": {
+        "display": "676.310 +/- 0.000 ms (n=5)",
+        "mean_ms": 676.3095000060275,
+        "std_ms": 0.0
+      },
+      "numpy": {
+        "mean_ms": 1.0621199995512143,
+        "std_ms": 0.10954924289184263
+      },
+      "opencv": {
+        "mean_ms": 0.050533332008247576,
+        "std_ms": 0.001764350745499666,
+        "min_ms": 0.04933999734930694,
+        "max_ms": 0.05255999858491123,
+        "spread_pct": 6.372034274483915,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_gaussian_blur_256x256_57725",
+            "timestamp": "2026-11-03T17:49:17.725976",
+            "mean_ms": 0.04933999734930694,
+            "std_ms": 0.0073193538351993045
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_gaussian_blur_256x256_58676",
+            "timestamp": "2026-11-03T17:49:18.676237",
+            "mean_ms": 0.049700000090524554,
+            "std_ms": 0.0026038405062602677
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_gaussian_blur_256x256_59626",
+            "timestamp": "2026-11-03T17:49:19.626124",
+            "mean_ms": 0.05255999858491123,
+            "std_ms": 0.023528130078076477
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "gaussian_blur_opencv_0016",
+        "winner_mean_ms": 0.050533332008247576,
+        "winner_std_ms": 0.001764350745499666,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 12.646536100000958,
+        "search_breakdown": {
+          "total_wall_s": 12.646536100000958,
+          "verification_s": 4.219822300001397,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "gaussian_blur",
+      "size": "1024x1024",
+      "naive_python": {
+        "display": "Omitted (>256x256)",
+        "mean_ms": null,
+        "std_ms": null
+      },
+      "numpy": {
+        "mean_ms": 60.367819998646155,
+        "std_ms": 1.1915804857291277
+      },
+      "opencv": {
+        "mean_ms": 0.5389466678025201,
+        "std_ms": 0.1493505897273176,
+        "min_ms": 0.39969999925233424,
+        "max_ms": 0.6966800050577149,
+        "spread_pct": 55.10378364825507,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_gaussian_blur_1024x1024_74259",
+            "timestamp": "2026-11-03T17:49:34.259227",
+            "mean_ms": 0.6966800050577149,
+            "std_ms": 0.18836542038357834
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_gaussian_blur_1024x1024_75293",
+            "timestamp": "2026-11-03T17:49:35.293646",
+            "mean_ms": 0.39969999925233424,
+            "std_ms": 0.04077799713578058
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_gaussian_blur_1024x1024_76242",
+            "timestamp": "2026-11-03T17:49:36.242936",
+            "mean_ms": 0.5204599990975112,
+            "std_ms": 0.13976134822057337
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "gaussian_blur_opencv_0021",
+        "winner_mean_ms": 0.5389466678025201,
+        "winner_std_ms": 0.1493505897273176,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 9.317672400007723,
+        "search_breakdown": {
+          "total_wall_s": 9.317672400007723,
+          "verification_s": 1.85999961104244e-05,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "gaussian_blur",
+      "size": "1920x1080",
+      "naive_python": {
+        "display": "Omitted (>256x256)",
+        "mean_ms": null,
+        "std_ms": null
+      },
+      "numpy": {
+        "mean_ms": 105.46685999433976,
+        "std_ms": 18.69781729668768
+      },
+      "opencv": {
+        "mean_ms": 0.800953332024316,
+        "std_ms": 0.15089801447922704,
+        "min_ms": 0.7064399978844449,
+        "max_ms": 0.9749799995915964,
+        "spread_pct": 33.5275466085456,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_gaussian_blur_1920x1080_87924",
+            "timestamp": "2026-11-03T17:49:47.924961",
+            "mean_ms": 0.7064399978844449,
+            "std_ms": 0.1517083024625892
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_gaussian_blur_1920x1080_88948",
+            "timestamp": "2026-11-03T17:49:48.948324",
+            "mean_ms": 0.9749799995915964,
+            "std_ms": 0.17919988601609557
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_gaussian_blur_1920x1080_90008",
+            "timestamp": "2026-11-03T17:49:50.008832",
+            "mean_ms": 0.7214399985969067,
+            "std_ms": 0.13237211958417688
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "gaussian_blur_opencv_0025",
+        "winner_mean_ms": 0.800953332024316,
+        "winner_std_ms": 0.15089801447922704,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 10.125028499998734,
+        "search_breakdown": {
+          "total_wall_s": 10.125028499998734,
+          "verification_s": 1.820000761654228e-05,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "sobel",
+      "size": "256x256",
+      "naive_python": {
+        "display": "185.231 +/- 0.000 ms (n=5)",
+        "mean_ms": 185.23129999812227,
+        "std_ms": 0.0
+      },
+      "numpy": {
+        "mean_ms": 1.487380001344718,
+        "std_ms": 0.2562575689693888
+      },
+      "opencv": {
+        "mean_ms": 0.5131199994745353,
+        "std_ms": 0.12306289398793868,
+        "min_ms": 0.441659998614341,
+        "max_ms": 0.6552200007718056,
+        "spread_pct": 41.6198944449958,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_sobel_256x256_4008",
+            "timestamp": "2026-11-03T17:50:04.008548",
+            "mean_ms": 0.441659998614341,
+            "std_ms": 0.0673653667437016
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_sobel_256x256_4878",
+            "timestamp": "2026-11-03T17:50:04.878199",
+            "mean_ms": 0.6552200007718056,
+            "std_ms": 0.09164006345032188
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_sobel_256x256_5828",
+            "timestamp": "2026-11-03T17:50:05.828459",
+            "mean_ms": 0.4424799990374595,
+            "std_ms": 0.06928287660168507
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "Numba Sequential",
+        "winner_backend": "numba",
+        "winner_candidate_id": "sobel_numba_0035",
+        "winner_mean_ms": 0.22597999777644873,
+        "winner_std_ms": 0.008256636052925693,
+        "winner_compile_ms": 671.7926999990596,
+        "speedup_vs_opencv": 2.270643439788598,
+        "search_wall_clock_s": 20.293216899997788,
+        "search_breakdown": {
+          "total_wall_s": 20.293216899997788,
+          "verification_s": 10.448202800005674,
+          "compile_ms": 671.7926999990596,
+          "candidates_evaluated": 6
+        },
+        "break_even_calls": 73013,
+        "break_even_text": "73,013 calls",
+        "break_even_30fps": "40.6 min (0.68 hrs)"
+      }
+    },
+    {
+      "kernel": "sobel",
+      "size": "1024x1024",
+      "naive_python": {
+        "display": "Omitted (>256x256)",
+        "mean_ms": null,
+        "std_ms": null
+      },
+      "numpy": {
+        "mean_ms": 34.73649999941699,
+        "std_ms": 2.1112623297871975
+      },
+      "opencv": {
+        "mean_ms": 5.817113334584671,
+        "std_ms": 0.5835159671578706,
+        "min_ms": 5.423539999173954,
+        "max_ms": 6.487520004156977,
+        "spread_pct": 18.290515308637847,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_sobel_1024x1024_27926",
+            "timestamp": "2026-11-03T17:50:27.926850",
+            "mean_ms": 6.487520004156977,
+            "std_ms": 0.8796627094652323
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_sobel_1024x1024_28804",
+            "timestamp": "2026-11-03T17:50:28.804990",
+            "mean_ms": 5.540280000423081,
+            "std_ms": 0.3607585599958389
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_sobel_1024x1024_29684",
+            "timestamp": "2026-11-03T17:50:29.684524",
+            "mean_ms": 5.423539999173954,
+            "std_ms": 0.44225375240628595
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "sobel_opencv_0036",
+        "winner_mean_ms": 5.817113334584671,
+        "winner_std_ms": 0.5835159671578706,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 10.496209599994472,
+        "search_breakdown": {
+          "total_wall_s": 10.496209599994472,
+          "verification_s": 2.0100007532164454e-05,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 6
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "sobel",
+      "size": "1920x1080",
+      "naive_python": {
+        "display": "Omitted (>256x256)",
+        "mean_ms": null,
+        "std_ms": null
+      },
+      "numpy": {
+        "mean_ms": 68.52017999917734,
+        "std_ms": 2.603588190091762
+      },
+      "opencv": {
+        "mean_ms": 13.123780000023544,
+        "std_ms": 2.1348616685402315,
+        "min_ms": 11.726400002953596,
+        "max_ms": 15.581199995358475,
+        "spread_pct": 29.372634960338885,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_sobel_1920x1080_42190",
+            "timestamp": "2026-11-03T17:50:42.190719",
+            "mean_ms": 15.581199995358475,
+            "std_ms": 0.9210684933637282
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_sobel_1920x1080_43171",
+            "timestamp": "2026-11-03T17:50:43.171223",
+            "mean_ms": 11.726400002953596,
+            "std_ms": 0.43280618304416335
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_sobel_1920x1080_44175",
+            "timestamp": "2026-11-03T17:50:44.175970",
+            "mean_ms": 12.06374000175856,
+            "std_ms": 0.7943835478020302
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "sobel_opencv_0042",
+        "winner_mean_ms": 13.123780000023544,
+        "winner_std_ms": 2.1348616685402315,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 11.229275799996685,
+        "search_breakdown": {
+          "total_wall_s": 11.229275799996685,
+          "verification_s": 1.729997165966779e-05,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 6
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "conv2d",
+      "size": "256x256",
+      "naive_python": {
+        "display": "254.090 +/- 0.000 ms (n=5)",
+        "mean_ms": 254.09010000294074,
+        "std_ms": 0.0
+      },
+      "numpy": {
+        "mean_ms": 0.6836400076281279,
+        "std_ms": 0.007112524484083359
+      },
+      "opencv": {
+        "mean_ms": 0.27564666330969584,
+        "std_ms": 0.007183796660551299,
+        "min_ms": 0.2678199962247163,
+        "max_ms": 0.28193999605719,
+        "spread_pct": 5.122499820217133,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_conv2d_256x256_64213",
+            "timestamp": "2026-11-03T17:51:04.213158",
+            "mean_ms": 0.27717999764718115,
+            "std_ms": 0.01647913776944701
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_conv2d_256x256_65058",
+            "timestamp": "2026-11-03T17:51:05.058085",
+            "mean_ms": 0.28193999605719,
+            "std_ms": 0.024594879536919634
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_conv2d_256x256_65884",
+            "timestamp": "2026-11-03T17:51:05.884114",
+            "mean_ms": 0.2678199962247163,
+            "std_ms": 0.004330357943622892
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "conv2d_opencv_0049",
+        "winner_mean_ms": 0.27564666330969584,
+        "winner_std_ms": 0.007183796660551299,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 11.02622609998798,
+        "search_breakdown": {
+          "total_wall_s": 11.02622609998798,
+          "verification_s": 5.008994900010293,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "conv2d",
+      "size": "1024x1024",
+      "naive_python": {
+        "display": "Omitted (>256x256)",
+        "mean_ms": null,
+        "std_ms": null
+      },
+      "numpy": {
+        "mean_ms": 16.189380001742393,
+        "std_ms": 0.74013977066916
+      },
+      "opencv": {
+        "mean_ms": 4.354946667444892,
+        "std_ms": 0.6025818735538402,
+        "min_ms": 3.8030199968488887,
+        "max_ms": 4.9978400056716055,
+        "spread_pct": 27.435927465071213,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_conv2d_1024x1024_78561",
+            "timestamp": "2026-11-03T17:51:18.561289",
+            "mean_ms": 3.8030199968488887,
+            "std_ms": 0.23380019077657443
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_conv2d_1024x1024_79423",
+            "timestamp": "2026-11-03T17:51:19.423260",
+            "mean_ms": 4.2639799998141825,
+            "std_ms": 0.24100099288305182
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_conv2d_1024x1024_80283",
+            "timestamp": "2026-11-03T17:51:20.283804",
+            "mean_ms": 4.9978400056716055,
+            "std_ms": 0.33653429205043117
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "conv2d_opencv_0054",
+        "winner_mean_ms": 4.354946667444892,
+        "winner_std_ms": 0.6025818735538402,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 6.6031914000050165,
+        "search_breakdown": {
+          "total_wall_s": 6.6031914000050165,
+          "verification_s": 1.2300006346777081e-05,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "conv2d",
+      "size": "1920x1080",
+      "naive_python": {
+        "display": "Omitted (>256x256)",
+        "mean_ms": null,
+        "std_ms": null
+      },
+      "numpy": {
+        "mean_ms": 34.709519997704774,
+        "std_ms": 0.38658037097024417
+      },
+      "opencv": {
+        "mean_ms": 9.438726667819234,
+        "std_ms": 0.6901712478513187,
+        "min_ms": 8.70062000467442,
+        "max_ms": 10.06803999771364,
+        "spread_pct": 14.487335433722814,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_conv2d_1920x1080_88767",
+            "timestamp": "2026-11-03T17:51:28.767605",
+            "mean_ms": 9.547520001069643,
+            "std_ms": 0.8371473815982283
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_conv2d_1920x1080_89708",
+            "timestamp": "2026-11-03T17:51:29.708682",
+            "mean_ms": 8.70062000467442,
+            "std_ms": 0.10014348619516983
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_conv2d_1920x1080_90647",
+            "timestamp": "2026-11-03T17:51:30.647214",
+            "mean_ms": 10.06803999771364,
+            "std_ms": 1.4445260853526516
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "conv2d_opencv_0058",
+        "winner_mean_ms": 9.438726667819234,
+        "winner_std_ms": 0.6901712478513187,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 6.948107799995341,
+        "search_breakdown": {
+          "total_wall_s": 6.948107799995341,
+          "verification_s": 1.4599994756281376e-05,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "fused_contrast_blur",
+      "size": "256x256",
+      "naive_python": {
+        "display": "1040.624 +/- 0.000 ms (n=5)",
+        "mean_ms": 1040.6235999980709,
+        "std_ms": 0.0
+      },
+      "numpy": {
+        "mean_ms": 1.3004800042835996,
+        "std_ms": 0.1038983261687452
+      },
+      "opencv": {
+        "mean_ms": 0.07064000237733126,
+        "std_ms": 0.0006878930056285018,
+        "min_ms": 0.07002000347711146,
+        "max_ms": 0.07137999928090721,
+        "spread_pct": 1.9252488080778785,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_fused_contrast_blur_256x256_1520",
+            "timestamp": "2026-11-03T17:51:41.520906",
+            "mean_ms": 0.0705200043739751,
+            "std_ms": 0.0170551231643247
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_fused_contrast_blur_256x256_2352",
+            "timestamp": "2026-11-03T17:51:42.352810",
+            "mean_ms": 0.07002000347711146,
+            "std_ms": 0.02276624497638255
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_fused_contrast_blur_256x256_3161",
+            "timestamp": "2026-11-03T17:51:43.161635",
+            "mean_ms": 0.07137999928090721,
+            "std_ms": 0.013975586394032985
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "fused_contrast_blur_opencv_0062",
+        "winner_mean_ms": 0.07064000237733126,
+        "winner_std_ms": 0.0006878930056285018,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 14.925400300009642,
+        "search_breakdown": {
+          "total_wall_s": 14.925400300009642,
+          "verification_s": 6.960861400017166,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "fused_contrast_blur",
+      "size": "1024x1024",
+      "naive_python": {
+        "display": "Omitted (>256x256)",
+        "mean_ms": null,
+        "std_ms": null
+      },
+      "numpy": {
+        "mean_ms": 41.76876000419725,
+        "std_ms": 3.744136909629293
+      },
+      "opencv": {
+        "mean_ms": 0.9319133338673661,
+        "std_ms": 0.032859319563573255,
+        "min_ms": 0.8949400013079867,
+        "max_ms": 0.9577799995895475,
+        "spread_pct": 6.74311612441254,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_fused_contrast_blur_1024x1024_19738",
+            "timestamp": "2026-11-03T17:51:59.738054",
+            "mean_ms": 0.8949400013079867,
+            "std_ms": 0.07800761645764966
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_fused_contrast_blur_1024x1024_20581",
+            "timestamp": "2026-11-03T17:52:00.581598",
+            "mean_ms": 0.9430200007045642,
+            "std_ms": 0.03391337257183626
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_fused_contrast_blur_1024x1024_21438",
+            "timestamp": "2026-11-03T17:52:01.438193",
+            "mean_ms": 0.9577799995895475,
+            "std_ms": 0.0418818244106837
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "fused_contrast_blur_opencv_0067",
+        "winner_mean_ms": 0.9319133338673661,
+        "winner_std_ms": 0.032859319563573255,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 8.622653900005389,
+        "search_breakdown": {
+          "total_wall_s": 8.622653900005389,
+          "verification_s": 1.300001167692244e-05,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    },
+    {
+      "kernel": "fused_contrast_blur",
+      "size": "1920x1080",
+      "naive_python": {
+        "display": "Omitted (>256x256)",
+        "mean_ms": null,
+        "std_ms": null
+      },
+      "numpy": {
+        "mean_ms": 90.62887999753002,
+        "std_ms": 7.7089829383193775
+      },
+      "opencv": {
+        "mean_ms": 1.5363466683387135,
+        "std_ms": 0.1404271789641096,
+        "min_ms": 1.4117600017925724,
+        "max_ms": 1.6885200020624325,
+        "spread_pct": 18.01416346800992,
+        "replications": [
+          {
+            "run_pass": "R1",
+            "run_id": "RUN_R1_fused_contrast_blur_1920x1080_32066",
+            "timestamp": "2026-11-03T17:52:12.066857",
+            "mean_ms": 1.4117600017925724,
+            "std_ms": 0.11788618805116668
+          },
+          {
+            "run_pass": "R2",
+            "run_id": "RUN_R2_fused_contrast_blur_1920x1080_32987",
+            "timestamp": "2026-11-03T17:52:12.987397",
+            "mean_ms": 1.6885200020624325,
+            "std_ms": 0.08481230278849786
+          },
+          {
+            "run_pass": "R3",
+            "run_id": "RUN_R3_fused_contrast_blur_1920x1080_33883",
+            "timestamp": "2026-11-03T17:52:13.883350",
+            "mean_ms": 1.5087600011611357,
+            "std_ms": 0.01607958124326244
+          }
+        ]
+      },
+      "seae": {
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "fused_contrast_blur_opencv_0071",
+        "winner_mean_ms": 1.5363466683387135,
+        "winner_std_ms": 0.1404271789641096,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 9.31172620000143,
+        "search_breakdown": {
+          "total_wall_s": 9.31172620000143,
+          "verification_s": 1.2300006346777081e-05,
+          "compile_ms": 0.0,
+          "candidates_evaluated": 4
+        },
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
+      }
+    }
+  ],
+  "search_comparison": {
+    "sobel": {
+      "exhaustive": {
+        "optimal_candidate_id": "sobel_numba_0075",
+        "optimal_backend": "numba",
+        "optimal_latency_ms": 0.729400001000613,
+        "optimal_std_ms": 0.18254701232898288
+      },
+      "strategies": {
+        "Random Search": {
+          "mean_search_s": 19.227562159998342,
+          "std_search_s": 6.3448231329243905,
+          "winner_id": "sobel_numba_0003",
+          "winner_backend": "numba",
+          "winner_latency_ms": 0.35691000036119175,
+          "winner_std_ms": 0.04254511738562122,
+          "exh_latency_ms": 0.3583433324820362,
+          "exh_std_ms": 0.03456260455902549,
+          "signed_regret_ms": -0.0014333321208444734,
+          "signed_regret_ci95_ms": 0.012650683801607636,
+          "rel_regret_pct": -0.39998850011150316,
+          "order_effect_check": {
+            "cand1_mean_when_first": 0.350939998558412,
+            "cand1_mean_when_second": 0.3657466664056604,
+            "cand2_mean_when_first": 0.36854666638343286,
+            "cand2_mean_when_second": 0.34527333433895063,
+            "cand1_order_effect_ms": -0.014806667847248378,
+            "cand2_order_effect_ms": 0.02327333204448223
+          }
+        },
+        "Bandit Search": {
+          "mean_search_s": 24.331757320003817,
+          "std_search_s": 1.5928607568574276,
+          "winner_id": "sobel_numba_0005",
+          "winner_backend": "numba",
+          "winner_latency_ms": 0.22219999809749424,
+          "winner_std_ms": 0.015869010970386052,
+          "exh_latency_ms": 0.2317966655634033,
+          "exh_std_ms": 0.01704048914033999,
+          "signed_regret_ms": -0.009596667465909073,
+          "signed_regret_ci95_ms": 0.006923898960044208,
+          "rel_regret_pct": -4.140123173292197,
+          "order_effect_check": {
+            "cand1_mean_when_first": 0.2308199997060001,
+            "cand1_mean_when_second": 0.23277333142080656,
+            "cand2_mean_when_first": 0.2197999982551361,
+            "cand2_mean_when_second": 0.22459999793985239,
+            "cand1_order_effect_ms": -0.0019533317148064666,
+            "cand2_order_effect_ms": -0.004799999684716283
+          }
+        },
+        "Evolutionary Search": {
+          "mean_search_s": 13.935599959996761,
+          "std_search_s": 4.962470068766343,
+          "winner_id": "sobel_opencv_0001",
+          "winner_backend": "opencv",
+          "winner_latency_ms": 0.19115333270747215,
+          "winner_std_ms": 0.04807465162510222,
+          "exh_latency_ms": 0.27068666628717136,
+          "exh_std_ms": 0.05127983044113497,
+          "signed_regret_ms": -0.0795333335796992,
+          "signed_regret_ci95_ms": 0.014767842520900382,
+          "rel_regret_pct": -29.38206549683623,
+          "order_effect_check": {
+            "cand1_mean_when_first": 0.2698933327337727,
+            "cand1_mean_when_second": 0.27147999984057,
+            "cand2_mean_when_first": 0.1794266669700543,
+            "cand2_mean_when_second": 0.20287999844489,
+            "cand1_order_effect_ms": -0.0015866671067972793,
+            "cand2_order_effect_ms": -0.023453331474835692
+          }
+        }
+      }
+    }
+  },
+  "large_space_evaluation": {
+    "kernel": "sobel",
+    "size": "256x256",
+    "total_discrete_configurations": 486,
+    "exhaustive_ground_truth": {
+      "duration_s": 131.63899160000437,
+      "winner_id": "sobel_numba_0131",
+      "winner_backend": "numba",
+      "latency_ms": 0.24726666257871935,
+      "std_ms": 0.042110618127507486
+    },
+    "strategies_multi_budget": [
+      {
+        "strategy": "Random Search",
+        "budget": 6,
+        "mean_search_s": 24.13590145998169,
+        "std_search_s": 9.743395873889627,
+        "mean_latency_ms": 0.34622666328990215,
+        "std_latency_ms": 0.07693238450345154,
+        "mean_speedup": 2.1914588175445084,
+        "sample_winner": "sobel_numba_0006",
+        "sample_backend": "numba"
+      },
+      {
+        "strategy": "Bandit Search",
+        "budget": 6,
+        "mean_search_s": 13.306683280004654,
+        "std_search_s": 9.304575992096469,
+        "mean_latency_ms": 0.4376199988958736,
+        "std_latency_ms": 0.07356461932557118,
+        "mean_speedup": 1.3682937176747747,
+        "sample_winner": "sobel_opencv_0001",
+        "sample_backend": "opencv"
+      },
+      {
+        "strategy": "Evolutionary Search",
+        "budget": 6,
+        "mean_search_s": 25.353632939988167,
+        "std_search_s": 7.441033775571807,
+        "mean_latency_ms": 0.3923333317895109,
+        "std_latency_ms": 0.0706160636819665,
+        "mean_speedup": 1.9245704001281119,
+        "sample_winner": "sobel_numba_0005",
+        "sample_backend": "numba"
+      },
+      {
+        "strategy": "Random Search",
+        "budget": 24,
+        "mean_search_s": 103.87952641995216,
+        "std_search_s": 14.384114686815785,
+        "mean_latency_ms": 0.32153332819386077,
+        "std_latency_ms": 0.041516328194425606,
+        "mean_speedup": 2.305701050031548,
+        "sample_winner": "sobel_numba_0009",
+        "sample_backend": "numba"
+      },
+      {
+        "strategy": "Bandit Search",
+        "budget": 24,
+        "mean_search_s": 54.383291740017015,
+        "std_search_s": 13.43379051322341,
+        "mean_latency_ms": 0.3582666628062725,
+        "std_latency_ms": 0.03801333318597378,
+        "mean_speedup": 2.0521094786395944,
+        "sample_winner": "sobel_numba_0010",
+        "sample_backend": "numba"
+      },
+      {
+        "strategy": "Evolutionary Search",
+        "budget": 24,
+        "mean_search_s": 79.6959551999491,
+        "std_search_s": 18.830114245001443,
+        "mean_latency_ms": 0.3220333281205967,
+        "std_latency_ms": 0.04180985333608571,
+        "mean_speedup": 2.30257106886812,
+        "sample_winner": "sobel_numba_0024",
+        "sample_backend": "numba"
+      },
+      {
+        "strategy": "Random Search",
+        "budget": 96,
+        "mean_search_s": 426.33808397978135,
+        "std_search_s": 21.69112273243293,
+        "mean_latency_ms": 0.31226666178554296,
+        "std_latency_ms": 0.04150702685891251,
+        "mean_speedup": 2.3733529743420307,
+        "sample_winner": "sobel_numba_0009",
+        "sample_backend": "numba"
+      },
+      {
+        "strategy": "Bandit Search",
+        "budget": 96,
+        "mean_search_s": 206.42772222002094,
+        "std_search_s": 12.781270458342842,
+        "mean_latency_ms": 0.3400999945976461,
+        "std_latency_ms": 0.0,
+        "mean_speedup": 2.14466337132268,
+        "sample_winner": "sobel_numba_0010",
+        "sample_backend": "numba"
+      },
+      {
+        "strategy": "Evolutionary Search",
+        "budget": 96,
+        "mean_search_s": 301.442401699844,
+        "std_search_s": 41.21287237656178,
+        "mean_latency_ms": 0.28997333235262585,
+        "std_latency_ms": 0.046111367669315444,
+        "mean_speedup": 2.5648341502824556,
+        "sample_winner": "sobel_numba_0083",
+        "sample_backend": "numba"
+      }
+    ]
+  }
+}

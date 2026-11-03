@@ -1,0 +1,15 @@
+# Virtual Environments
+.venv/
+test_fresh_venv/
+
+# Python cache & artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mplconfig/
+
+# SQLite databases
+*.db
+*.sqlite
