@@ -72,29 +72,29 @@ def generate_opencv_kernel(kernel_name: str, config: Optional[KernelConfig] = No
         elif hasattr(config, "parallel") and not config.parallel:
             threads = 1
 
-    thread_setup = f"    cv2.setNumThreads({threads})\n"
+    thread_setup = f"cv2.setNumThreads({threads})\n"
 
     if kernel_name == "gaussian_blur":
         return f'''import cv2
 import numpy as np
-
+{thread_setup}
 def kernel_entry(img, ksize=5, sigma=1.0, **kwargs):
-{thread_setup}    return cv2.GaussianBlur(img, (ksize, ksize), sigmaX=sigma, sigmaY=sigma, borderType=cv2.BORDER_REPLICATE)
+    return cv2.GaussianBlur(img, (ksize, ksize), sigmaX=sigma, sigmaY=sigma, borderType=cv2.BORDER_REPLICATE)
 '''
     elif kernel_name == "threshold":
         return f'''import cv2
 import numpy as np
-
+{thread_setup}
 def kernel_entry(img, thresh=128.0, maxval=255.0, **kwargs):
-{thread_setup}    _, out = cv2.threshold(img, float(thresh), float(maxval), cv2.THRESH_BINARY)
-    return out
+    _, res = cv2.threshold(img, float(thresh), float(maxval), cv2.THRESH_BINARY)
+    return res
 '''
     elif kernel_name == "sobel":
         return f'''import cv2
 import numpy as np
-
+{thread_setup}
 def kernel_entry(img, **kwargs):
-{thread_setup}    if img.ndim == 3:
+    if img.ndim == 3:
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     else:
         gray = img
@@ -106,9 +106,9 @@ def kernel_entry(img, **kwargs):
     return mag.astype(img.dtype)
 '''
     elif kernel_name == "conv2d":
-        return r'''import cv2
+        return f'''import cv2
 import numpy as np
-
+{thread_setup}
 def kernel_entry(img, kernel=None, **kwargs):
     if kernel is None:
         kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]], dtype=np.float32)
@@ -119,12 +119,10 @@ def kernel_entry(img, kernel=None, **kwargs):
     return filtered.astype(img.dtype)
 '''
     elif kernel_name == "fused_contrast_blur":
-        return r'''import cv2
+        return f'''import cv2
 import numpy as np
-
+{thread_setup}
 def kernel_entry(img, alpha=1.5, beta=10.0, ksize=5, sigma=1.0, **kwargs):
-    # OpenCV baseline: two separate library calls and intermediate memory allocations
-    # cv2.convertScaleAbs followed by cv2.GaussianBlur
     enhanced = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
     blurred = cv2.GaussianBlur(enhanced, (ksize, ksize), sigmaX=sigma, sigmaY=sigma, borderType=cv2.BORDER_REPLICATE)
     return blurred

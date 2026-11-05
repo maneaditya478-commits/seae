@@ -117,6 +117,13 @@ def main():
     spec2.loader.exec_module(mod2)
     entry2 = mod2.kernel_entry
 
+    # Measure candidate 2 compilation time on first run
+    res1 = entry1(img, **kwargs)
+    t_comp0 = time.perf_counter()
+    res2 = entry2(img, **kwargs)
+    t_comp1 = time.perf_counter()
+    cand2_compile_ms = (t_comp1 - t_comp0) * 1000.0
+
     # Warmup both
     for _ in range(warmup_runs):
         _ = entry1(img, **kwargs)
@@ -176,6 +183,7 @@ def main():
             "times1_when_second": times1_when_second,
             "times2_when_first": times2_when_first,
             "times2_when_second": times2_when_second,
+            "cand2_compile_ms": cand2_compile_ms,
         }, f)
 
 if __name__ == "__main__":
@@ -199,6 +207,7 @@ class InterleavedComparisonResult:
     mean_diff_ms: float = 0.0
     std_diff_ms: float = 0.0
     ci_95_ms: float = 0.0
+    cand2_compile_ms: float = 0.0
     order_effect_check: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -671,5 +680,6 @@ class Benchmarker:
                 mean_diff_ms=mean_diff,
                 std_diff_ms=std_diff,
                 ci_95_ms=ci_95,
+                cand2_compile_ms=float(data.get("cand2_compile_ms", 0.0)),
                 order_effect_check=order_check,
             )

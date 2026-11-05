@@ -185,8 +185,11 @@ def test_readme_tables_match_benchmark_raw_results_json():
 
     # 2. Check Sobel 256x256 break-even calls and speedup
     sobel_row = next(r for r in raw["matrix"] if r["kernel"] == "sobel" and r["size"] == "256x256")
-    sobel_be_calls = f"{sobel_row['seae']['break_even_calls']:,} calls"
-    assert sobel_be_calls in readme_text
+    if sobel_row["seae"]["break_even_calls"] is not None:
+        sobel_be_calls = f"{sobel_row['seae']['break_even_calls']:,} calls"
+        assert sobel_be_calls in readme_text
+    else:
+        assert "N/A" in readme_text
 
     sobel_speedup = f"{sobel_row['seae']['speedup_vs_opencv']:.2f}x"
     assert sobel_speedup in readme_text

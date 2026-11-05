@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "timestamp": "2026-11-03T17:59:31",
+    "timestamp": "2026-11-06T00:40:39",
     "versions": {
       "python": "3.13.0",
       "numpy": "2.3.5",
@@ -15,7 +15,7 @@
       "cpu_freq_mhz": 3201.0,
       "power_plan": "Legion Balance Mode",
       "power_plugged": true,
-      "battery_percent": 58,
+      "battery_percent": 53,
       "simd_features": [
         "AVX",
         "AVX2",
@@ -34,10 +34,10 @@
     },
     "threads": 8,
     "opencv_thread_baselines_sobel_256": {
-      "threads_1_ms": 0.4635700024664402,
-      "threads_1_std": 0.056076592517153474,
-      "threads_8_ms": 0.729400001000613,
-      "threads_8_std": 0.18254701232898288
+      "threads_1_ms": 0.15821666650784513,
+      "threads_1_std": 0.02491129194352267,
+      "threads_8_ms": 0.1611966667648327,
+      "threads_8_std": 0.04137910908028387
     }
   },
   "matrix": [
@@ -45,41 +45,41 @@
       "kernel": "threshold",
       "size": "256x256",
       "naive_python": {
-        "display": "145.550 ms (n=5, std not recorded)",
-        "mean_ms": 145.54990000033285,
+        "display": "116.986 +/- 0.000 ms (n=5)",
+        "mean_ms": 116.98550000073737,
         "std_ms": 0.0
       },
       "numpy": {
-        "mean_ms": 0.14302000345196575,
-        "std_ms": 0.03236590651109245
+        "mean_ms": 0.16510666658480963,
+        "std_ms": 0.038993234249170644
       },
       "opencv": {
-        "mean_ms": 0.005019999419649442,
-        "std_ms": 0.0005414796005169264,
-        "min_ms": 0.004639997496269643,
-        "max_ms": 0.005639999289996922,
-        "spread_pct": 19.920356759664948,
+        "mean_ms": 0.004255555662287709,
+        "std_ms": 0.00031376466926119704,
+        "min_ms": 0.004013333212545452,
+        "max_ms": 0.004610000299483848,
+        "spread_pct": 14.020897252643119,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_threshold_256x256_21327",
-            "timestamp": "2026-11-03T17:48:41.327861",
-            "mean_ms": 0.004780001472681761,
-            "std_ms": 0.0005540745108099835
+            "run_id": "RUN_R1_threshold_256x256_2600",
+            "timestamp": "2026-11-06T00:18:22.600903",
+            "mean_ms": 0.004610000299483848,
+            "std_ms": 0.00040458606305734436
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_threshold_256x256_22298",
-            "timestamp": "2026-11-03T17:48:42.298692",
-            "mean_ms": 0.004639997496269643,
-            "std_ms": 0.0007668113467112765
+            "run_id": "RUN_R2_threshold_256x256_3570",
+            "timestamp": "2026-11-06T00:18:23.570753",
+            "mean_ms": 0.004013333212545452,
+            "std_ms": 0.0003598212718602825
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_threshold_256x256_23291",
-            "timestamp": "2026-11-03T17:48:43.291280",
-            "mean_ms": 0.005639999289996922,
-            "std_ms": 0.0008018693863431245
+            "run_id": "RUN_R3_threshold_256x256_4503",
+            "timestamp": "2026-11-06T00:18:24.503039",
+            "mean_ms": 0.004143333474833828,
+            "std_ms": 0.0003729506957838952
           }
         ]
       },
@@ -87,14 +87,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "threshold_opencv_0003",
-        "winner_mean_ms": 0.005019999419649442,
-        "winner_std_ms": 0.0005414796005169264,
+        "winner_mean_ms": 0.004255555662287709,
+        "winner_std_ms": 0.00031376466926119704,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 10.211907699995209,
+        "search_wall_clock_s": 8.386431499999162,
         "search_breakdown": {
-          "total_wall_s": 10.211907699995209,
-          "verification_s": 4.474517700014985,
+          "total_wall_s": 8.386431499999162,
+          "verification_s": 4.3727988000027835,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -112,36 +112,36 @@
         "std_ms": null
       },
       "numpy": {
-        "mean_ms": 4.466239997418597,
-        "std_ms": 0.6070670699193891
+        "mean_ms": 4.9813633329904405,
+        "std_ms": 0.3334089770148848
       },
       "opencv": {
-        "mean_ms": 0.261460001153561,
-        "std_ms": 0.03979345053793011,
-        "min_ms": 0.2155200025299564,
-        "max_ms": 0.2852400008123368,
-        "spread_pct": 26.66564597826662,
+        "mean_ms": 0.43128000025818536,
+        "std_ms": 0.05236439032817428,
+        "min_ms": 0.3871999996287438,
+        "max_ms": 0.4891633337441211,
+        "spread_pct": 23.642027002025838,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_threshold_1024x1024_35406",
-            "timestamp": "2026-11-03T17:48:55.406549",
-            "mean_ms": 0.2852400008123368,
-            "std_ms": 0.019543873294147432
+            "run_id": "RUN_R1_threshold_1024x1024_14722",
+            "timestamp": "2026-11-06T00:18:34.722831",
+            "mean_ms": 0.3871999996287438,
+            "std_ms": 0.11297815788233947
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_threshold_1024x1024_36417",
-            "timestamp": "2026-11-03T17:48:56.417641",
-            "mean_ms": 0.2836200001183897,
-            "std_ms": 0.06923357057361426
+            "run_id": "RUN_R2_threshold_1024x1024_15655",
+            "timestamp": "2026-11-06T00:18:35.655561",
+            "mean_ms": 0.41747666740169126,
+            "std_ms": 0.09043730391192818
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_threshold_1024x1024_37423",
-            "timestamp": "2026-11-03T17:48:57.423035",
-            "mean_ms": 0.2155200025299564,
-            "std_ms": 0.01527275093995492
+            "run_id": "RUN_R3_threshold_1024x1024_16605",
+            "timestamp": "2026-11-06T00:18:36.605853",
+            "mean_ms": 0.4891633337441211,
+            "std_ms": 0.23546941729035187
           }
         ]
       },
@@ -149,14 +149,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "threshold_opencv_0008",
-        "winner_mean_ms": 0.261460001153561,
-        "winner_std_ms": 0.03979345053793011,
+        "winner_mean_ms": 0.43128000025818536,
+        "winner_std_ms": 0.05236439032817428,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 6.0729981000040425,
+        "search_wall_clock_s": 4.290364399999817,
         "search_breakdown": {
-          "total_wall_s": 6.0729981000040425,
-          "verification_s": 1.6699996194802225e-05,
+          "total_wall_s": 4.290364399999817,
+          "verification_s": 0.0009828999973251484,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -174,36 +174,36 @@
         "std_ms": null
       },
       "numpy": {
-        "mean_ms": 13.265840001986362,
-        "std_ms": 0.5224988382761924
+        "mean_ms": 13.23867000004005,
+        "std_ms": 0.9966074764938466
       },
       "opencv": {
-        "mean_ms": 0.44753999973181635,
-        "std_ms": 0.07675696552192403,
-        "min_ms": 0.36589999799616635,
-        "max_ms": 0.5182399996556342,
-        "spread_pct": 34.03941586243821,
+        "mean_ms": 0.6991622222105636,
+        "std_ms": 0.10674276631569667,
+        "min_ms": 0.5987333337543532,
+        "max_ms": 0.8112599996820791,
+        "spread_pct": 30.39733257551781,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_threshold_1920x1080_45549",
-            "timestamp": "2026-11-03T17:49:05.549392",
-            "mean_ms": 0.45848000154364854,
-            "std_ms": 0.06678496953083908
+            "run_id": "RUN_R1_threshold_1920x1080_22957",
+            "timestamp": "2026-11-06T00:18:42.957605",
+            "mean_ms": 0.6874933331952585,
+            "std_ms": 0.14840555312844503
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_threshold_1920x1080_46629",
-            "timestamp": "2026-11-03T17:49:06.629502",
-            "mean_ms": 0.36589999799616635,
-            "std_ms": 0.021490814392061897
+            "run_id": "RUN_R2_threshold_1920x1080_24072",
+            "timestamp": "2026-11-06T00:18:44.072683",
+            "mean_ms": 0.8112599996820791,
+            "std_ms": 0.20731503811052698
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_threshold_1920x1080_47635",
-            "timestamp": "2026-11-03T17:49:07.635664",
-            "mean_ms": 0.5182399996556342,
-            "std_ms": 0.15289876597040458
+            "run_id": "RUN_R3_threshold_1920x1080_25099",
+            "timestamp": "2026-11-06T00:18:45.099576",
+            "mean_ms": 0.5987333337543532,
+            "std_ms": 0.05892301449989671
           }
         ]
       },
@@ -211,14 +211,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "threshold_opencv_0012",
-        "winner_mean_ms": 0.44753999973181635,
-        "winner_std_ms": 0.07675696552192403,
+        "winner_mean_ms": 0.6991622222105636,
+        "winner_std_ms": 0.10674276631569667,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 6.261082500001066,
+        "search_wall_clock_s": 4.125802300000942,
         "search_breakdown": {
-          "total_wall_s": 6.261082500001066,
-          "verification_s": 1.920001523103565e-05,
+          "total_wall_s": 4.125802300000942,
+          "verification_s": 0.0010597000000416301,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -231,41 +231,41 @@
       "kernel": "gaussian_blur",
       "size": "256x256",
       "naive_python": {
-        "display": "676.310 ms (n=5, std not recorded)",
-        "mean_ms": 676.3095000060275,
+        "display": "640.104 +/- 0.000 ms (n=5)",
+        "mean_ms": 640.1044000012917,
         "std_ms": 0.0
       },
       "numpy": {
-        "mean_ms": 1.0621199995512143,
-        "std_ms": 0.10954924289184263
+        "mean_ms": 1.6259866667193517,
+        "std_ms": 0.2556606016070645
       },
       "opencv": {
-        "mean_ms": 0.050533332008247576,
-        "std_ms": 0.001764350745499666,
-        "min_ms": 0.04933999734930694,
-        "max_ms": 0.05255999858491123,
-        "spread_pct": 6.372034274483915,
+        "mean_ms": 0.04455000004478885,
+        "std_ms": 0.01268604800856626,
+        "min_ms": 0.03671999984362628,
+        "max_ms": 0.05918666684010532,
+        "spread_pct": 50.43022889762495,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_gaussian_blur_256x256_57725",
-            "timestamp": "2026-11-03T17:49:17.725976",
-            "mean_ms": 0.04933999734930694,
-            "std_ms": 0.0073193538351993045
+            "run_id": "RUN_R1_gaussian_blur_256x256_33285",
+            "timestamp": "2026-11-06T00:18:53.285532",
+            "mean_ms": 0.037743333450634964,
+            "std_ms": 0.009164424650388425
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_gaussian_blur_256x256_58676",
-            "timestamp": "2026-11-03T17:49:18.676237",
-            "mean_ms": 0.049700000090524554,
-            "std_ms": 0.0026038405062602677
+            "run_id": "RUN_R2_gaussian_blur_256x256_34191",
+            "timestamp": "2026-11-06T00:18:54.191305",
+            "mean_ms": 0.05918666684010532,
+            "std_ms": 0.053421981491902866
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_gaussian_blur_256x256_59626",
-            "timestamp": "2026-11-03T17:49:19.626124",
-            "mean_ms": 0.05255999858491123,
-            "std_ms": 0.023528130078076477
+            "run_id": "RUN_R3_gaussian_blur_256x256_35161",
+            "timestamp": "2026-11-06T00:18:55.161755",
+            "mean_ms": 0.03671999984362628,
+            "std_ms": 0.0053201243447221465
           }
         ]
       },
@@ -273,14 +273,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "gaussian_blur_opencv_0016",
-        "winner_mean_ms": 0.050533332008247576,
-        "winner_std_ms": 0.001764350745499666,
+        "winner_mean_ms": 0.04455000004478885,
+        "winner_std_ms": 0.01268604800856626,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 12.646536100000958,
+        "search_wall_clock_s": 10.879706599997007,
         "search_breakdown": {
-          "total_wall_s": 12.646536100000958,
-          "verification_s": 4.219822300001397,
+          "total_wall_s": 10.879706599997007,
+          "verification_s": 4.195045000004029,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -298,36 +298,36 @@
         "std_ms": null
       },
       "numpy": {
-        "mean_ms": 60.367819998646155,
-        "std_ms": 1.1915804857291277
+        "mean_ms": 54.21806333324639,
+        "std_ms": 9.869972334473179
       },
       "opencv": {
-        "mean_ms": 0.5389466678025201,
-        "std_ms": 0.1493505897273176,
-        "min_ms": 0.39969999925233424,
-        "max_ms": 0.6966800050577149,
-        "spread_pct": 55.10378364825507,
+        "mean_ms": 0.5489655554912234,
+        "std_ms": 0.04917805356696557,
+        "min_ms": 0.51631333323409,
+        "max_ms": 0.6055266667923812,
+        "spread_pct": 16.251171437971486,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_gaussian_blur_1024x1024_74259",
-            "timestamp": "2026-11-03T17:49:34.259227",
-            "mean_ms": 0.6966800050577149,
-            "std_ms": 0.18836542038357834
+            "run_id": "RUN_R1_gaussian_blur_1024x1024_47955",
+            "timestamp": "2026-11-06T00:19:07.955891",
+            "mean_ms": 0.6055266667923812,
+            "std_ms": 0.1663280431956798
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_gaussian_blur_1024x1024_75293",
-            "timestamp": "2026-11-03T17:49:35.293646",
-            "mean_ms": 0.39969999925233424,
-            "std_ms": 0.04077799713578058
+            "run_id": "RUN_R2_gaussian_blur_1024x1024_48926",
+            "timestamp": "2026-11-06T00:19:08.926147",
+            "mean_ms": 0.525056666447199,
+            "std_ms": 0.1142278230197663
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_gaussian_blur_1024x1024_76242",
-            "timestamp": "2026-11-03T17:49:36.242936",
-            "mean_ms": 0.5204599990975112,
-            "std_ms": 0.13976134822057337
+            "run_id": "RUN_R3_gaussian_blur_1024x1024_49860",
+            "timestamp": "2026-11-06T00:19:09.860628",
+            "mean_ms": 0.51631333323409,
+            "std_ms": 0.0957351758750162
           }
         ]
       },
@@ -335,14 +335,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "gaussian_blur_opencv_0021",
-        "winner_mean_ms": 0.5389466678025201,
-        "winner_std_ms": 0.1493505897273176,
+        "winner_mean_ms": 0.5489655554912234,
+        "winner_std_ms": 0.04917805356696557,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 9.317672400007723,
+        "search_wall_clock_s": 7.513699600000109,
         "search_breakdown": {
-          "total_wall_s": 9.317672400007723,
-          "verification_s": 1.85999961104244e-05,
+          "total_wall_s": 7.513699600000109,
+          "verification_s": 0.0021574000020336825,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -360,36 +360,36 @@
         "std_ms": null
       },
       "numpy": {
-        "mean_ms": 105.46685999433976,
-        "std_ms": 18.69781729668768
+        "mean_ms": 111.88988666678294,
+        "std_ms": 15.20958143560052
       },
       "opencv": {
-        "mean_ms": 0.800953332024316,
-        "std_ms": 0.15089801447922704,
-        "min_ms": 0.7064399978844449,
-        "max_ms": 0.9749799995915964,
-        "spread_pct": 33.5275466085456,
+        "mean_ms": 0.8706044444503883,
+        "std_ms": 0.02441251023537476,
+        "min_ms": 0.8437599998918207,
+        "max_ms": 0.8914766669477103,
+        "spread_pct": 5.480866466976641,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_gaussian_blur_1920x1080_87924",
-            "timestamp": "2026-11-03T17:49:47.924961",
-            "mean_ms": 0.7064399978844449,
-            "std_ms": 0.1517083024625892
+            "run_id": "RUN_R1_gaussian_blur_1920x1080_61228",
+            "timestamp": "2026-11-06T00:19:21.228777",
+            "mean_ms": 0.8437599998918207,
+            "std_ms": 0.11662594978611124
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_gaussian_blur_1920x1080_88948",
-            "timestamp": "2026-11-03T17:49:48.948324",
-            "mean_ms": 0.9749799995915964,
-            "std_ms": 0.17919988601609557
+            "run_id": "RUN_R2_gaussian_blur_1920x1080_62273",
+            "timestamp": "2026-11-06T00:19:22.273192",
+            "mean_ms": 0.876576666511634,
+            "std_ms": 0.1294366430943912
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_gaussian_blur_1920x1080_90008",
-            "timestamp": "2026-11-03T17:49:50.008832",
-            "mean_ms": 0.7214399985969067,
-            "std_ms": 0.13237211958417688
+            "run_id": "RUN_R3_gaussian_blur_1920x1080_63326",
+            "timestamp": "2026-11-06T00:19:23.326437",
+            "mean_ms": 0.8914766669477103,
+            "std_ms": 0.1633470739922038
           }
         ]
       },
@@ -397,14 +397,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "gaussian_blur_opencv_0025",
-        "winner_mean_ms": 0.800953332024316,
-        "winner_std_ms": 0.15089801447922704,
+        "winner_mean_ms": 0.8706044444503883,
+        "winner_std_ms": 0.02441251023537476,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 10.125028499998734,
+        "search_wall_clock_s": 8.486469000003126,
         "search_breakdown": {
-          "total_wall_s": 10.125028499998734,
-          "verification_s": 1.820000761654228e-05,
+          "total_wall_s": 8.486469000003126,
+          "verification_s": 0.0029032999991613906,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -417,62 +417,62 @@
       "kernel": "sobel",
       "size": "256x256",
       "naive_python": {
-        "display": "185.231 ms (n=5, std not recorded)",
-        "mean_ms": 185.23129999812227,
+        "display": "203.236 +/- 0.000 ms (n=5)",
+        "mean_ms": 203.23590000043623,
         "std_ms": 0.0
       },
       "numpy": {
-        "mean_ms": 1.487380001344718,
-        "std_ms": 0.2562575689693888
+        "mean_ms": 1.5324333335835643,
+        "std_ms": 0.23913521386237502
       },
       "opencv": {
-        "mean_ms": 0.5131199994745353,
-        "std_ms": 0.12306289398793868,
-        "min_ms": 0.441659998614341,
-        "max_ms": 0.6552200007718056,
-        "spread_pct": 41.6198944449958,
+        "mean_ms": 0.3655011109205791,
+        "std_ms": 0.2642493640174689,
+        "min_ms": 0.15589333343086764,
+        "max_ms": 0.6623366665735375,
+        "spread_pct": 138.56136630258194,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_sobel_256x256_4008",
-            "timestamp": "2026-11-03T17:50:04.008548",
-            "mean_ms": 0.441659998614341,
-            "std_ms": 0.0673653667437016
+            "run_id": "RUN_R1_sobel_256x256_78833",
+            "timestamp": "2026-11-06T00:19:38.833724",
+            "mean_ms": 0.15589333343086764,
+            "std_ms": 0.03332913182430677
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_sobel_256x256_4878",
-            "timestamp": "2026-11-03T17:50:04.878199",
-            "mean_ms": 0.6552200007718056,
-            "std_ms": 0.09164006345032188
+            "run_id": "RUN_R2_sobel_256x256_79773",
+            "timestamp": "2026-11-06T00:19:39.773456",
+            "mean_ms": 0.6623366665735375,
+            "std_ms": 0.12814448604212095
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_sobel_256x256_5828",
-            "timestamp": "2026-11-03T17:50:05.828459",
-            "mean_ms": 0.4424799990374595,
-            "std_ms": 0.06928287660168507
+            "run_id": "RUN_R3_sobel_256x256_80781",
+            "timestamp": "2026-11-06T00:19:40.781526",
+            "mean_ms": 0.27827333275733207,
+            "std_ms": 0.060092187208960736
           }
         ]
       },
       "seae": {
-        "winner_description": "Numba Sequential",
-        "winner_backend": "numba",
-        "winner_candidate_id": "sobel_numba_0035",
-        "winner_mean_ms": 0.22597999777644873,
-        "winner_std_ms": 0.008256636052925693,
-        "winner_compile_ms": 671.7926999990596,
-        "speedup_vs_opencv": 2.270643439788598,
-        "search_wall_clock_s": 20.293216899997788,
+        "winner_description": "OpenCV baseline",
+        "winner_backend": "opencv",
+        "winner_candidate_id": "sobel_opencv_0029",
+        "winner_mean_ms": 0.3655011109205791,
+        "winner_std_ms": 0.2642493640174689,
+        "winner_compile_ms": 0.0,
+        "speedup_vs_opencv": 1.0,
+        "search_wall_clock_s": 26.895205000000715,
         "search_breakdown": {
-          "total_wall_s": 20.293216899997788,
-          "verification_s": 10.448202800005674,
-          "compile_ms": 671.7926999990596,
+          "total_wall_s": 26.895205000000715,
+          "verification_s": 13.94383899999957,
+          "compile_ms": 0.0,
           "candidates_evaluated": 6
         },
-        "break_even_calls": 73013,
-        "break_even_text": "73,013 calls",
-        "break_even_30fps": "40.6 min (0.68 hrs)"
+        "break_even_calls": null,
+        "break_even_text": "N/A",
+        "break_even_30fps": "N/A"
       }
     },
     {
@@ -484,36 +484,36 @@
         "std_ms": null
       },
       "numpy": {
-        "mean_ms": 34.73649999941699,
-        "std_ms": 2.1112623297871975
+        "mean_ms": 44.91702666673518,
+        "std_ms": 4.6861953425685
       },
       "opencv": {
-        "mean_ms": 5.817113334584671,
-        "std_ms": 0.5835159671578706,
-        "min_ms": 5.423539999173954,
-        "max_ms": 6.487520004156977,
-        "spread_pct": 18.290515308637847,
+        "mean_ms": 6.598937777946251,
+        "std_ms": 0.9118490247860445,
+        "min_ms": 5.574886666242189,
+        "max_ms": 7.322996667183664,
+        "spread_pct": 26.490778664161446,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_sobel_1024x1024_27926",
-            "timestamp": "2026-11-03T17:50:27.926850",
-            "mean_ms": 6.487520004156977,
-            "std_ms": 0.8796627094652323
+            "run_id": "RUN_R1_sobel_1024x1024_9659",
+            "timestamp": "2026-11-06T00:20:09.659909",
+            "mean_ms": 7.322996667183664,
+            "std_ms": 0.33039012123400524
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_sobel_1024x1024_28804",
-            "timestamp": "2026-11-03T17:50:28.804990",
-            "mean_ms": 5.540280000423081,
-            "std_ms": 0.3607585599958389
+            "run_id": "RUN_R2_sobel_1024x1024_11107",
+            "timestamp": "2026-11-06T00:20:11.107496",
+            "mean_ms": 6.898930000412899,
+            "std_ms": 0.7356065760220347
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_sobel_1024x1024_29684",
-            "timestamp": "2026-11-03T17:50:29.684524",
-            "mean_ms": 5.423539999173954,
-            "std_ms": 0.44225375240628595
+            "run_id": "RUN_R3_sobel_1024x1024_12483",
+            "timestamp": "2026-11-06T00:20:12.483061",
+            "mean_ms": 5.574886666242189,
+            "std_ms": 0.17788901713526453
           }
         ]
       },
@@ -521,14 +521,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "sobel_opencv_0036",
-        "winner_mean_ms": 5.817113334584671,
-        "winner_std_ms": 0.5835159671578706,
+        "winner_mean_ms": 6.598937777946251,
+        "winner_std_ms": 0.9118490247860445,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 10.496209599994472,
+        "search_wall_clock_s": 15.221328200001153,
         "search_breakdown": {
-          "total_wall_s": 10.496209599994472,
-          "verification_s": 2.0100007532164454e-05,
+          "total_wall_s": 15.221328200001153,
+          "verification_s": 0.003869800002576085,
           "compile_ms": 0.0,
           "candidates_evaluated": 6
         },
@@ -546,36 +546,36 @@
         "std_ms": null
       },
       "numpy": {
-        "mean_ms": 68.52017999917734,
-        "std_ms": 2.603588190091762
+        "mean_ms": 83.95440666669553,
+        "std_ms": 9.348452103796088
       },
       "opencv": {
-        "mean_ms": 13.123780000023544,
-        "std_ms": 2.1348616685402315,
-        "min_ms": 11.726400002953596,
-        "max_ms": 15.581199995358475,
-        "spread_pct": 29.372634960338885,
+        "mean_ms": 16.004456666835015,
+        "std_ms": 0.36628124024950437,
+        "min_ms": 15.581516666497919,
+        "max_ms": 16.21773333378466,
+        "spread_pct": 3.9752468986037646,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_sobel_1920x1080_42190",
-            "timestamp": "2026-11-03T17:50:42.190719",
-            "mean_ms": 15.581199995358475,
-            "std_ms": 0.9210684933637282
+            "run_id": "RUN_R1_sobel_1920x1080_31814",
+            "timestamp": "2026-11-06T00:20:31.814309",
+            "mean_ms": 15.581516666497919,
+            "std_ms": 1.2365196756218524
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_sobel_1920x1080_43171",
-            "timestamp": "2026-11-03T17:50:43.171223",
-            "mean_ms": 11.726400002953596,
-            "std_ms": 0.43280618304416335
+            "run_id": "RUN_R2_sobel_1920x1080_33846",
+            "timestamp": "2026-11-06T00:20:33.846918",
+            "mean_ms": 16.214120000222465,
+            "std_ms": 1.1006045298192155
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_sobel_1920x1080_44175",
-            "timestamp": "2026-11-03T17:50:44.175970",
-            "mean_ms": 12.06374000175856,
-            "std_ms": 0.7943835478020302
+            "run_id": "RUN_R3_sobel_1920x1080_35920",
+            "timestamp": "2026-11-06T00:20:35.920003",
+            "mean_ms": 16.21773333378466,
+            "std_ms": 0.5064770902816937
           }
         ]
       },
@@ -583,14 +583,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "sobel_opencv_0042",
-        "winner_mean_ms": 13.123780000023544,
-        "winner_std_ms": 2.1348616685402315,
+        "winner_mean_ms": 16.004456666835015,
+        "winner_std_ms": 0.36628124024950437,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 11.229275799996685,
+        "search_wall_clock_s": 17.600840200000675,
         "search_breakdown": {
-          "total_wall_s": 11.229275799996685,
-          "verification_s": 1.729997165966779e-05,
+          "total_wall_s": 17.600840200000675,
+          "verification_s": 0.004014300000562798,
           "compile_ms": 0.0,
           "candidates_evaluated": 6
         },
@@ -603,41 +603,41 @@
       "kernel": "conv2d",
       "size": "256x256",
       "naive_python": {
-        "display": "254.090 ms (n=5, std not recorded)",
-        "mean_ms": 254.09010000294074,
+        "display": "242.940 +/- 0.000 ms (n=5)",
+        "mean_ms": 242.93960000068182,
         "std_ms": 0.0
       },
       "numpy": {
-        "mean_ms": 0.6836400076281279,
-        "std_ms": 0.007112524484083359
+        "mean_ms": 0.5084166668287556,
+        "std_ms": 0.11107427211919632
       },
       "opencv": {
-        "mean_ms": 0.27564666330969584,
-        "std_ms": 0.007183796660551299,
-        "min_ms": 0.2678199962247163,
-        "max_ms": 0.28193999605719,
-        "spread_pct": 5.122499820217133,
+        "mean_ms": 0.3020777775721702,
+        "std_ms": 0.03487849270819985,
+        "min_ms": 0.27470999969712767,
+        "max_ms": 0.3413499998714542,
+        "spread_pct": 22.060543714906466,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_conv2d_256x256_64213",
-            "timestamp": "2026-11-03T17:51:04.213158",
-            "mean_ms": 0.27717999764718115,
-            "std_ms": 0.01647913776944701
+            "run_id": "RUN_R1_conv2d_256x256_69891",
+            "timestamp": "2026-11-06T00:21:09.891139",
+            "mean_ms": 0.29017333314792876,
+            "std_ms": 0.05556021860396443
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_conv2d_256x256_65058",
-            "timestamp": "2026-11-03T17:51:05.058085",
-            "mean_ms": 0.28193999605719,
-            "std_ms": 0.024594879536919634
+            "run_id": "RUN_R2_conv2d_256x256_70799",
+            "timestamp": "2026-11-06T00:21:10.799035",
+            "mean_ms": 0.3413499998714542,
+            "std_ms": 0.05102258987293385
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_conv2d_256x256_65884",
-            "timestamp": "2026-11-03T17:51:05.884114",
-            "mean_ms": 0.2678199962247163,
-            "std_ms": 0.004330357943622892
+            "run_id": "RUN_R3_conv2d_256x256_71778",
+            "timestamp": "2026-11-06T00:21:11.778236",
+            "mean_ms": 0.27470999969712767,
+            "std_ms": 0.035753729687053364
           }
         ]
       },
@@ -645,14 +645,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "conv2d_opencv_0049",
-        "winner_mean_ms": 0.27564666330969584,
-        "winner_std_ms": 0.007183796660551299,
+        "winner_mean_ms": 0.3020777775721702,
+        "winner_std_ms": 0.03487849270819985,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 11.02622609998798,
+        "search_wall_clock_s": 11.31497440000021,
         "search_breakdown": {
-          "total_wall_s": 11.02622609998798,
-          "verification_s": 5.008994900010293,
+          "total_wall_s": 11.31497440000021,
+          "verification_s": 6.188043599999219,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -670,36 +670,36 @@
         "std_ms": null
       },
       "numpy": {
-        "mean_ms": 16.189380001742393,
-        "std_ms": 0.74013977066916
+        "mean_ms": 23.117036666493124,
+        "std_ms": 4.13811195948306
       },
       "opencv": {
-        "mean_ms": 4.354946667444892,
-        "std_ms": 0.6025818735538402,
-        "min_ms": 3.8030199968488887,
-        "max_ms": 4.9978400056716055,
-        "spread_pct": 27.435927465071213,
+        "mean_ms": 4.947234444464104,
+        "std_ms": 0.3664145048224109,
+        "min_ms": 4.554483333413373,
+        "max_ms": 5.279880000064925,
+        "spread_pct": 14.66267011993464,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_conv2d_1024x1024_78561",
-            "timestamp": "2026-11-03T17:51:18.561289",
-            "mean_ms": 3.8030199968488887,
-            "std_ms": 0.23380019077657443
+            "run_id": "RUN_R1_conv2d_1024x1024_84966",
+            "timestamp": "2026-11-06T00:21:24.966386",
+            "mean_ms": 4.554483333413373,
+            "std_ms": 0.2793987156016086
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_conv2d_1024x1024_79423",
-            "timestamp": "2026-11-03T17:51:19.423260",
-            "mean_ms": 4.2639799998141825,
-            "std_ms": 0.24100099288305182
+            "run_id": "RUN_R2_conv2d_1024x1024_86235",
+            "timestamp": "2026-11-06T00:21:26.235838",
+            "mean_ms": 5.007339999914014,
+            "std_ms": 0.43774432080059805
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_conv2d_1024x1024_80283",
-            "timestamp": "2026-11-03T17:51:20.283804",
-            "mean_ms": 4.9978400056716055,
-            "std_ms": 0.33653429205043117
+            "run_id": "RUN_R3_conv2d_1024x1024_87560",
+            "timestamp": "2026-11-06T00:21:27.560340",
+            "mean_ms": 5.279880000064925,
+            "std_ms": 0.3870097091947172
           }
         ]
       },
@@ -707,14 +707,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "conv2d_opencv_0054",
-        "winner_mean_ms": 4.354946667444892,
-        "winner_std_ms": 0.6025818735538402,
+        "winner_mean_ms": 4.947234444464104,
+        "winner_std_ms": 0.3664145048224109,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 6.6031914000050165,
+        "search_wall_clock_s": 6.484820300000138,
         "search_breakdown": {
-          "total_wall_s": 6.6031914000050165,
-          "verification_s": 1.2300006346777081e-05,
+          "total_wall_s": 6.484820300000138,
+          "verification_s": 0.002515200001653284,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -732,36 +732,36 @@
         "std_ms": null
       },
       "numpy": {
-        "mean_ms": 34.709519997704774,
-        "std_ms": 0.38658037097024417
+        "mean_ms": 48.91894666676914,
+        "std_ms": 4.62317505826755
       },
       "opencv": {
-        "mean_ms": 9.438726667819234,
-        "std_ms": 0.6901712478513187,
-        "min_ms": 8.70062000467442,
-        "max_ms": 10.06803999771364,
-        "spread_pct": 14.487335433722814,
+        "mean_ms": 10.76321999999992,
+        "std_ms": 0.48149061245165753,
+        "min_ms": 10.325796667166287,
+        "max_ms": 11.279133333300706,
+        "spread_pct": 8.857355569563996,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_conv2d_1920x1080_88767",
-            "timestamp": "2026-11-03T17:51:28.767605",
-            "mean_ms": 9.547520001069643,
-            "std_ms": 0.8371473815982283
+            "run_id": "RUN_R1_conv2d_1920x1080_97215",
+            "timestamp": "2026-11-06T00:21:37.215184",
+            "mean_ms": 10.325796667166287,
+            "std_ms": 0.5793396594127836
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_conv2d_1920x1080_89708",
-            "timestamp": "2026-11-03T17:51:29.708682",
-            "mean_ms": 8.70062000467442,
-            "std_ms": 0.10014348619516983
+            "run_id": "RUN_R2_conv2d_1920x1080_98835",
+            "timestamp": "2026-11-06T00:21:38.835687",
+            "mean_ms": 10.684729999532768,
+            "std_ms": 0.637711828091305
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_conv2d_1920x1080_90647",
-            "timestamp": "2026-11-03T17:51:30.647214",
-            "mean_ms": 10.06803999771364,
-            "std_ms": 1.4445260853526516
+            "run_id": "RUN_R3_conv2d_1920x1080_513",
+            "timestamp": "2026-11-06T00:21:40.513196",
+            "mean_ms": 11.279133333300706,
+            "std_ms": 0.7596392715504011
           }
         ]
       },
@@ -769,14 +769,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "conv2d_opencv_0058",
-        "winner_mean_ms": 9.438726667819234,
-        "winner_std_ms": 0.6901712478513187,
+        "winner_mean_ms": 10.76321999999992,
+        "winner_std_ms": 0.48149061245165753,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 6.948107799995341,
+        "search_wall_clock_s": 7.610314000001381,
         "search_breakdown": {
-          "total_wall_s": 6.948107799995341,
-          "verification_s": 1.4599994756281376e-05,
+          "total_wall_s": 7.610314000001381,
+          "verification_s": 0.002796799995849142,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -789,41 +789,41 @@
       "kernel": "fused_contrast_blur",
       "size": "256x256",
       "naive_python": {
-        "display": "1040.624 ms (n=5, std not recorded)",
-        "mean_ms": 1040.6235999980709,
+        "display": "1094.996 +/- 0.000 ms (n=5)",
+        "mean_ms": 1094.9957000011636,
         "std_ms": 0.0
       },
       "numpy": {
-        "mean_ms": 1.3004800042835996,
-        "std_ms": 0.1038983261687452
+        "mean_ms": 1.6546866673403808,
+        "std_ms": 0.2214920150082775
       },
       "opencv": {
-        "mean_ms": 0.07064000237733126,
-        "std_ms": 0.0006878930056285018,
-        "min_ms": 0.07002000347711146,
-        "max_ms": 0.07137999928090721,
-        "spread_pct": 1.9252488080778785,
+        "mean_ms": 0.058365555701635055,
+        "std_ms": 0.002569531432430994,
+        "min_ms": 0.0554300003083578,
+        "max_ms": 0.06020666660333518,
+        "spread_pct": 8.184050057530023,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_fused_contrast_blur_256x256_1520",
-            "timestamp": "2026-11-03T17:51:41.520906",
-            "mean_ms": 0.0705200043739751,
-            "std_ms": 0.0170551231643247
+            "run_id": "RUN_R1_fused_contrast_blur_256x256_14756",
+            "timestamp": "2026-11-06T00:21:54.756194",
+            "mean_ms": 0.06020666660333518,
+            "std_ms": 0.020979348505445587
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_fused_contrast_blur_256x256_2352",
-            "timestamp": "2026-11-03T17:51:42.352810",
-            "mean_ms": 0.07002000347711146,
-            "std_ms": 0.02276624497638255
+            "run_id": "RUN_R2_fused_contrast_blur_256x256_15769",
+            "timestamp": "2026-11-06T00:21:55.769803",
+            "mean_ms": 0.05946000019321218,
+            "std_ms": 0.021496232327940006
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_fused_contrast_blur_256x256_3161",
-            "timestamp": "2026-11-03T17:51:43.161635",
-            "mean_ms": 0.07137999928090721,
-            "std_ms": 0.013975586394032985
+            "run_id": "RUN_R3_fused_contrast_blur_256x256_16667",
+            "timestamp": "2026-11-06T00:21:56.667706",
+            "mean_ms": 0.0554300003083578,
+            "std_ms": 0.010403220364190056
           }
         ]
       },
@@ -831,14 +831,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "fused_contrast_blur_opencv_0062",
-        "winner_mean_ms": 0.07064000237733126,
-        "winner_std_ms": 0.0006878930056285018,
+        "winner_mean_ms": 0.058365555701635055,
+        "winner_std_ms": 0.002569531432430994,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 14.925400300009642,
+        "search_wall_clock_s": 15.928119100000913,
         "search_breakdown": {
-          "total_wall_s": 14.925400300009642,
-          "verification_s": 6.960861400017166,
+          "total_wall_s": 15.928119100000913,
+          "verification_s": 8.402978299996903,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -856,36 +856,36 @@
         "std_ms": null
       },
       "numpy": {
-        "mean_ms": 41.76876000419725,
-        "std_ms": 3.744136909629293
+        "mean_ms": 63.88084666687064,
+        "std_ms": 6.884934824448119
       },
       "opencv": {
-        "mean_ms": 0.9319133338673661,
-        "std_ms": 0.032859319563573255,
-        "min_ms": 0.8949400013079867,
-        "max_ms": 0.9577799995895475,
-        "spread_pct": 6.74311612441254,
+        "mean_ms": 1.055698888780575,
+        "std_ms": 0.049489425486433744,
+        "min_ms": 1.0133533332312556,
+        "max_ms": 1.1101033333640469,
+        "spread_pct": 9.164545038457508,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_fused_contrast_blur_1024x1024_19738",
-            "timestamp": "2026-11-03T17:51:59.738054",
-            "mean_ms": 0.8949400013079867,
-            "std_ms": 0.07800761645764966
+            "run_id": "RUN_R1_fused_contrast_blur_1024x1024_34593",
+            "timestamp": "2026-11-06T00:22:14.593411",
+            "mean_ms": 1.0133533332312556,
+            "std_ms": 0.1501240519799723
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_fused_contrast_blur_1024x1024_20581",
-            "timestamp": "2026-11-03T17:52:00.581598",
-            "mean_ms": 0.9430200007045642,
-            "std_ms": 0.03391337257183626
+            "run_id": "RUN_R2_fused_contrast_blur_1024x1024_35562",
+            "timestamp": "2026-11-06T00:22:15.562552",
+            "mean_ms": 1.1101033333640469,
+            "std_ms": 0.11484167021112096
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_fused_contrast_blur_1024x1024_21438",
-            "timestamp": "2026-11-03T17:52:01.438193",
-            "mean_ms": 0.9577799995895475,
-            "std_ms": 0.0418818244106837
+            "run_id": "RUN_R3_fused_contrast_blur_1024x1024_36632",
+            "timestamp": "2026-11-06T00:22:16.632813",
+            "mean_ms": 1.0436399997464225,
+            "std_ms": 0.09410546011171225
           }
         ]
       },
@@ -893,14 +893,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "fused_contrast_blur_opencv_0067",
-        "winner_mean_ms": 0.9319133338673661,
-        "winner_std_ms": 0.032859319563573255,
+        "winner_mean_ms": 1.055698888780575,
+        "winner_std_ms": 0.049489425486433744,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 8.622653900005389,
+        "search_wall_clock_s": 8.613810399998329,
         "search_breakdown": {
-          "total_wall_s": 8.622653900005389,
-          "verification_s": 1.300001167692244e-05,
+          "total_wall_s": 8.613810399998329,
+          "verification_s": 0.0019775999971898273,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -918,36 +918,36 @@
         "std_ms": null
       },
       "numpy": {
-        "mean_ms": 90.62887999753002,
-        "std_ms": 7.7089829383193775
+        "mean_ms": 124.74353333370043,
+        "std_ms": 16.942846230164825
       },
       "opencv": {
-        "mean_ms": 1.5363466683387135,
-        "std_ms": 0.1404271789641096,
-        "min_ms": 1.4117600017925724,
-        "max_ms": 1.6885200020624325,
-        "spread_pct": 18.01416346800992,
+        "mean_ms": 1.5914955553954415,
+        "std_ms": 0.07128560936723598,
+        "min_ms": 1.526486666261917,
+        "max_ms": 1.6677266663464252,
+        "spread_pct": 8.874671349579364,
         "replications": [
           {
             "run_pass": "R1",
-            "run_id": "RUN_R1_fused_contrast_blur_1920x1080_32066",
-            "timestamp": "2026-11-03T17:52:12.066857",
-            "mean_ms": 1.4117600017925724,
-            "std_ms": 0.11788618805116668
+            "run_id": "RUN_R1_fused_contrast_blur_1920x1080_49446",
+            "timestamp": "2026-11-06T00:22:29.446339",
+            "mean_ms": 1.526486666261917,
+            "std_ms": 0.12306199729589515
           },
           {
             "run_pass": "R2",
-            "run_id": "RUN_R2_fused_contrast_blur_1920x1080_32987",
-            "timestamp": "2026-11-03T17:52:12.987397",
-            "mean_ms": 1.6885200020624325,
-            "std_ms": 0.08481230278849786
+            "run_id": "RUN_R2_fused_contrast_blur_1920x1080_50513",
+            "timestamp": "2026-11-06T00:22:30.513588",
+            "mean_ms": 1.6677266663464252,
+            "std_ms": 0.14586102028134487
           },
           {
             "run_pass": "R3",
-            "run_id": "RUN_R3_fused_contrast_blur_1920x1080_33883",
-            "timestamp": "2026-11-03T17:52:13.883350",
-            "mean_ms": 1.5087600011611357,
-            "std_ms": 0.01607958124326244
+            "run_id": "RUN_R3_fused_contrast_blur_1920x1080_51532",
+            "timestamp": "2026-11-06T00:22:31.532530",
+            "mean_ms": 1.5802733335779824,
+            "std_ms": 0.1540329725791305
           }
         ]
       },
@@ -955,14 +955,14 @@
         "winner_description": "OpenCV baseline",
         "winner_backend": "opencv",
         "winner_candidate_id": "fused_contrast_blur_opencv_0071",
-        "winner_mean_ms": 1.5363466683387135,
-        "winner_std_ms": 0.1404271789641096,
+        "winner_mean_ms": 1.5914955553954415,
+        "winner_std_ms": 0.07128560936723598,
         "winner_compile_ms": 0.0,
         "speedup_vs_opencv": 1.0,
-        "search_wall_clock_s": 9.31172620000143,
+        "search_wall_clock_s": 9.845212300002459,
         "search_breakdown": {
-          "total_wall_s": 9.31172620000143,
-          "verification_s": 1.2300006346777081e-05,
+          "total_wall_s": 9.845212300002459,
+          "verification_s": 0.001954799998202361,
           "compile_ms": 0.0,
           "candidates_evaluated": 4
         },
@@ -975,73 +975,146 @@
   "search_comparison": {
     "sobel": {
       "exhaustive": {
-        "optimal_candidate_id": "sobel_numba_0075",
-        "optimal_backend": "numba",
-        "optimal_latency_ms": 0.729400001000613,
-        "optimal_std_ms": 0.18254701232898288
+        "optimal_candidate_id": "sobel_opencv_0076",
+        "optimal_backend": "opencv",
+        "optimal_latency_ms": 0.23325000001932494,
+        "optimal_std_ms": 0.022493964934759404
       },
       "strategies": {
         "Random Search": {
-          "mean_search_s": 19.227562159998342,
-          "std_search_s": 6.3448231329243905,
-          "winner_id": "sobel_numba_0003",
-          "winner_backend": "numba",
-          "winner_latency_ms": 0.35691000036119175,
-          "winner_std_ms": 0.04254511738562122,
-          "exh_latency_ms": 0.3583433324820362,
-          "exh_std_ms": 0.03456260455902549,
-          "signed_regret_ms": -0.0014333321208444734,
-          "signed_regret_ci95_ms": 0.012650683801607636,
-          "rel_regret_pct": -0.39998850011150316,
+          "mean_search_s": 35.19673508000051,
+          "std_search_s": 8.720063837944888,
+          "winner_id": "sobel_opencv_0001",
+          "winner_backend": "opencv",
+          "winner_latency_ms": 0.23393999981635716,
+          "winner_std_ms": 0.09966365005819235,
+          "exh_latency_ms": 0.22268666616582777,
+          "exh_std_ms": 0.056944478801338676,
+          "signed_regret_ms": 0.011253333650529385,
+          "signed_regret_ci95_ms": 0.0341587533876877,
+          "rel_regret_pct": 5.053438467729981,
           "order_effect_check": {
-            "cand1_mean_when_first": 0.350939998558412,
-            "cand1_mean_when_second": 0.3657466664056604,
-            "cand2_mean_when_first": 0.36854666638343286,
-            "cand2_mean_when_second": 0.34527333433895063,
-            "cand1_order_effect_ms": -0.014806667847248378,
-            "cand2_order_effect_ms": 0.02327333204448223
+            "cand1_mean_when_first": 0.2097866658004932,
+            "cand1_mean_when_second": 0.23558666653116234,
+            "cand2_mean_when_first": 0.195506666447424,
+            "cand2_mean_when_second": 0.2723733331852903,
+            "cand1_order_effect_ms": -0.025800000730669126,
+            "cand2_order_effect_ms": -0.07686666673786627
           }
         },
         "Bandit Search": {
-          "mean_search_s": 24.331757320003817,
-          "std_search_s": 1.5928607568574276,
-          "winner_id": "sobel_numba_0005",
-          "winner_backend": "numba",
-          "winner_latency_ms": 0.22219999809749424,
-          "winner_std_ms": 0.015869010970386052,
-          "exh_latency_ms": 0.2317966655634033,
-          "exh_std_ms": 0.01704048914033999,
-          "signed_regret_ms": -0.009596667465909073,
-          "signed_regret_ci95_ms": 0.006923898960044208,
-          "rel_regret_pct": -4.140123173292197,
+          "mean_search_s": 27.383389760000135,
+          "std_search_s": 2.123410196469168,
+          "winner_id": "sobel_opencv_0012",
+          "winner_backend": "opencv",
+          "winner_latency_ms": 0.5881166668890122,
+          "winner_std_ms": 0.07773512972887657,
+          "exh_latency_ms": 0.5765333333935511,
+          "exh_std_ms": 0.07625058663467944,
+          "signed_regret_ms": 0.011583333495461071,
+          "signed_regret_ci95_ms": 0.030262215184229516,
+          "rel_regret_pct": 2.0091350880407983,
           "order_effect_check": {
-            "cand1_mean_when_first": 0.2308199997060001,
-            "cand1_mean_when_second": 0.23277333142080656,
-            "cand2_mean_when_first": 0.2197999982551361,
-            "cand2_mean_when_second": 0.22459999793985239,
-            "cand1_order_effect_ms": -0.0019533317148064666,
-            "cand2_order_effect_ms": -0.004799999684716283
+            "cand1_mean_when_first": 0.5677533333558434,
+            "cand1_mean_when_second": 0.5853133334312588,
+            "cand2_mean_when_first": 0.6199466670902135,
+            "cand2_mean_when_second": 0.5562866666878108,
+            "cand1_order_effect_ms": -0.01756000007541536,
+            "cand2_order_effect_ms": 0.06366000040240272
           }
         },
         "Evolutionary Search": {
-          "mean_search_s": 13.935599959996761,
-          "std_search_s": 4.962470068766343,
-          "winner_id": "sobel_opencv_0001",
-          "winner_backend": "opencv",
-          "winner_latency_ms": 0.19115333270747215,
-          "winner_std_ms": 0.04807465162510222,
-          "exh_latency_ms": 0.27068666628717136,
-          "exh_std_ms": 0.05127983044113497,
-          "signed_regret_ms": -0.0795333335796992,
-          "signed_regret_ci95_ms": 0.014767842520900382,
-          "rel_regret_pct": -29.38206549683623,
+          "mean_search_s": 29.416960760000073,
+          "std_search_s": 6.949820143004433,
+          "winner_id": "sobel_numba_0003",
+          "winner_backend": "numba",
+          "winner_latency_ms": 0.36115666625846643,
+          "winner_std_ms": 0.114097411168379,
+          "exh_latency_ms": 0.23325000001932494,
+          "exh_std_ms": 0.022493964934759404,
+          "signed_regret_ms": 0.1279066662391415,
+          "signed_regret_ci95_ms": 0.04222137052687719,
+          "rel_regret_pct": 54.83672721481,
           "order_effect_check": {
-            "cand1_mean_when_first": 0.2698933327337727,
-            "cand1_mean_when_second": 0.27147999984057,
-            "cand2_mean_when_first": 0.1794266669700543,
-            "cand2_mean_when_second": 0.20287999844489,
-            "cand1_order_effect_ms": -0.0015866671067972793,
-            "cand2_order_effect_ms": -0.023453331474835692
+            "cand1_mean_when_first": 0.22985999991457598,
+            "cand1_mean_when_second": 0.2366400001240739,
+            "cand2_mean_when_first": 0.34148000001247664,
+            "cand2_mean_when_second": 0.3808333325044562,
+            "cand1_order_effect_ms": -0.006780000209497927,
+            "cand2_order_effect_ms": -0.03935333249197959
+          }
+        }
+      }
+    },
+    "threshold": {
+      "exhaustive": {
+        "optimal_candidate_id": "threshold_opencv_0561",
+        "optimal_backend": "opencv",
+        "optimal_latency_ms": 0.005193333466498491,
+        "optimal_std_ms": 0.0006085214674737004
+      },
+      "strategies": {
+        "Random Search": {
+          "mean_search_s": 28.47884222000066,
+          "std_search_s": 4.280823239494879,
+          "winner_id": "threshold_opencv_0001",
+          "winner_backend": "opencv",
+          "winner_latency_ms": 0.007103333094467719,
+          "winner_std_ms": 0.000958980608372008,
+          "exh_latency_ms": 0.00691666646162048,
+          "exh_std_ms": 0.0005843260047384649,
+          "signed_regret_ms": 0.00018666663284723958,
+          "signed_regret_ci95_ms": 0.0003065907541862551,
+          "rel_regret_pct": 2.698794771773716,
+          "order_effect_check": {
+            "cand1_mean_when_first": 0.0069266665377654135,
+            "cand1_mean_when_second": 0.006906666385475546,
+            "cand2_mean_when_first": 0.007019999854189034,
+            "cand2_mean_when_second": 0.0071866663347464055,
+            "cand1_order_effect_ms": 2.00001522898674e-05,
+            "cand2_order_effect_ms": -0.00016666648055737188
+          }
+        },
+        "Bandit Search": {
+          "mean_search_s": 26.234240339999815,
+          "std_search_s": 2.0485507412626585,
+          "winner_id": "threshold_opencv_0008",
+          "winner_backend": "opencv",
+          "winner_latency_ms": 0.0052900003841690095,
+          "winner_std_ms": 0.0008044491627838031,
+          "exh_latency_ms": 0.005489999481748479,
+          "exh_std_ms": 0.0018225317146079235,
+          "signed_regret_ms": -0.0001999990975794693,
+          "signed_regret_ci95_ms": 0.0007546684937847831,
+          "rel_regret_pct": -3.6429711559056956,
+          "order_effect_check": {
+            "cand1_mean_when_first": 0.005213333254990478,
+            "cand1_mean_when_second": 0.00576666570850648,
+            "cand2_mean_when_first": 0.005140000333388646,
+            "cand2_mean_when_second": 0.005440000434949373,
+            "cand1_order_effect_ms": -0.0005533324535160018,
+            "cand2_order_effect_ms": -0.00030000010156072676
+          }
+        },
+        "Evolutionary Search": {
+          "mean_search_s": 23.600223680001363,
+          "std_search_s": 5.631144793168625,
+          "winner_id": "threshold_opencv_0001",
+          "winner_backend": "opencv",
+          "winner_latency_ms": 0.005263333393183227,
+          "winner_std_ms": 0.000747170990954534,
+          "exh_latency_ms": 0.005193333466498491,
+          "exh_std_ms": 0.0006085214674737004,
+          "signed_regret_ms": 6.999992668473472e-05,
+          "signed_regret_ci95_ms": 0.0003012792156226377,
+          "rel_regret_pct": 1.3478804535910316,
+          "order_effect_check": {
+            "cand1_mean_when_first": 0.00527333371186008,
+            "cand1_mean_when_second": 0.0051133332211369025,
+            "cand2_mean_when_first": 0.005153333525716637,
+            "cand2_mean_when_second": 0.005373333260649815,
+            "cand1_order_effect_ms": 0.0001600004907231778,
+            "cand2_order_effect_ms": -0.00021999973493317792
           }
         }
       }
@@ -1052,111 +1125,147 @@
     "size": "256x256",
     "total_discrete_configurations": 486,
     "exhaustive_ground_truth": {
-      "duration_s": 131.63899160000437,
-      "winner_id": "sobel_numba_0131",
-      "winner_backend": "numba",
-      "latency_ms": 0.24726666257871935,
-      "std_ms": 0.042110618127507486
+      "winner_id": "sobel_opencv_0076",
+      "winner_backend": "opencv",
+      "latency_ms": 0.1852666665702903,
+      "std_ms": 0.045942109739961205,
+      "duration_s": 212.43010090000098
     },
     "strategies_multi_budget": [
       {
         "strategy": "Random Search",
         "budget": 6,
-        "mean_search_s": 24.13590145998169,
-        "std_search_s": 9.743395873889627,
-        "mean_latency_ms": 0.34622666328990215,
-        "std_latency_ms": 0.07693238450345154,
-        "mean_speedup": 2.1914588175445084,
-        "sample_winner": "sobel_numba_0006",
-        "sample_backend": "numba"
+        "mean_search_s": 35.97742530000251,
+        "std_search_s": 4.16536837991941,
+        "best_found_latency_ms": 0.34382866659143474,
+        "best_found_std_ms": 0.06733681415252321,
+        "mean_latency_ms": 0.34382866659143474,
+        "std_latency_ms": 0.06733681415252321,
+        "best_found_speedup": 0.4875009828487544,
+        "sample_winner": "sobel_numba_0001",
+        "sample_backend": "numba",
+        "promoted_status": "No (Baseline retained)",
+        "promoted_speedup": 1.0
       },
       {
         "strategy": "Bandit Search",
         "budget": 6,
-        "mean_search_s": 13.306683280004654,
-        "std_search_s": 9.304575992096469,
-        "mean_latency_ms": 0.4376199988958736,
-        "std_latency_ms": 0.07356461932557118,
-        "mean_speedup": 1.3682937176747747,
+        "mean_search_s": 13.98339285999973,
+        "std_search_s": 8.872647114112475,
+        "best_found_latency_ms": 0.18598199991780956,
+        "best_found_std_ms": 0.0015995339916254944,
+        "mean_latency_ms": 0.18598199991780956,
+        "std_latency_ms": 0.0015995339916254944,
+        "best_found_speedup": 0.8667833302226062,
         "sample_winner": "sobel_opencv_0001",
-        "sample_backend": "opencv"
+        "sample_backend": "opencv",
+        "promoted_status": "No (Baseline retained)",
+        "promoted_speedup": 1.0
       },
       {
         "strategy": "Evolutionary Search",
         "budget": 6,
-        "mean_search_s": 25.353632939988167,
-        "std_search_s": 7.441033775571807,
-        "mean_latency_ms": 0.3923333317895109,
-        "std_latency_ms": 0.0706160636819665,
-        "mean_speedup": 1.9245704001281119,
-        "sample_winner": "sobel_numba_0005",
-        "sample_backend": "numba"
+        "mean_search_s": 32.519427239999644,
+        "std_search_s": 8.623351649930141,
+        "best_found_latency_ms": 0.3684706665808335,
+        "best_found_std_ms": 0.05174416761303342,
+        "mean_latency_ms": 0.3684706665808335,
+        "std_latency_ms": 0.05174416761303342,
+        "best_found_speedup": 0.44544004968723466,
+        "sample_winner": "sobel_numba_0001",
+        "sample_backend": "numba",
+        "promoted_status": "No (Baseline retained)",
+        "promoted_speedup": 1.0
       },
       {
         "strategy": "Random Search",
         "budget": 24,
-        "mean_search_s": 103.87952641995216,
-        "std_search_s": 14.384114686815785,
-        "mean_latency_ms": 0.32153332819386077,
-        "std_latency_ms": 0.041516328194425606,
-        "mean_speedup": 2.305701050031548,
-        "sample_winner": "sobel_numba_0009",
-        "sample_backend": "numba"
+        "mean_search_s": 141.49115957999675,
+        "std_search_s": 10.983286505885472,
+        "best_found_latency_ms": 0.3086013334541349,
+        "best_found_std_ms": 0.07125679393354928,
+        "mean_latency_ms": 0.3086013334541349,
+        "std_latency_ms": 0.07125679393354928,
+        "best_found_speedup": 0.5549751826432942,
+        "sample_winner": "sobel_numba_0001",
+        "sample_backend": "numba",
+        "promoted_status": "No (Baseline retained)",
+        "promoted_speedup": 1.0
       },
       {
         "strategy": "Bandit Search",
         "budget": 24,
-        "mean_search_s": 54.383291740017015,
-        "std_search_s": 13.43379051322341,
-        "mean_latency_ms": 0.3582666628062725,
-        "std_latency_ms": 0.03801333318597378,
-        "mean_speedup": 2.0521094786395944,
-        "sample_winner": "sobel_numba_0010",
-        "sample_backend": "numba"
-      },
-      {
-        "strategy": "Evolutionary Search",
-        "budget": 24,
-        "mean_search_s": 79.6959551999491,
-        "std_search_s": 18.830114245001443,
-        "mean_latency_ms": 0.3220333281205967,
-        "std_latency_ms": 0.04180985333608571,
-        "mean_speedup": 2.30257106886812,
-        "sample_winner": "sobel_numba_0024",
-        "sample_backend": "numba"
-      },
-      {
-        "strategy": "Random Search",
-        "budget": 96,
-        "mean_search_s": 426.33808397978135,
-        "std_search_s": 21.69112273243293,
-        "mean_latency_ms": 0.31226666178554296,
-        "std_latency_ms": 0.04150702685891251,
-        "mean_speedup": 2.3733529743420307,
-        "sample_winner": "sobel_numba_0009",
-        "sample_backend": "numba"
-      },
-      {
-        "strategy": "Bandit Search",
-        "budget": 96,
-        "mean_search_s": 206.42772222002094,
-        "std_search_s": 12.781270458342842,
-        "mean_latency_ms": 0.3400999945976461,
+        "mean_search_s": 61.97659779999376,
+        "std_search_s": 14.914204987500984,
+        "best_found_latency_ms": 0.1852666665702903,
+        "best_found_std_ms": 0.0,
+        "mean_latency_ms": 0.1852666665702903,
         "std_latency_ms": 0.0,
-        "mean_speedup": 2.14466337132268,
-        "sample_winner": "sobel_numba_0010",
-        "sample_backend": "numba"
+        "best_found_speedup": 0.8700791661498081,
+        "sample_winner": "sobel_opencv_0001",
+        "sample_backend": "opencv",
+        "promoted_status": "No (Baseline retained)",
+        "promoted_speedup": 1.0
+      },
+      {
+        "strategy": "Evolutionary Search",
+        "budget": 24,
+        "mean_search_s": 127.84158956000101,
+        "std_search_s": 10.330356686252816,
+        "best_found_latency_ms": 0.32412333336348337,
+        "best_found_std_ms": 0.07820148686044544,
+        "mean_latency_ms": 0.32412333336348337,
+        "std_latency_ms": 0.07820148686044544,
+        "best_found_speedup": 0.5336473023218373,
+        "sample_winner": "sobel_numba_0001",
+        "sample_backend": "numba",
+        "promoted_status": "No (Baseline retained)",
+        "promoted_speedup": 1.0
+      },
+      {
+        "strategy": "Random Search",
+        "budget": 96,
+        "mean_search_s": 568.6028010399962,
+        "std_search_s": 20.778455088674544,
+        "best_found_latency_ms": 0.2848640001563278,
+        "best_found_std_ms": 0.06653339442045586,
+        "mean_latency_ms": 0.2848640001563278,
+        "std_latency_ms": 0.06653339442045586,
+        "best_found_speedup": 0.5969505806064163,
+        "sample_winner": "sobel_numba_0062",
+        "sample_backend": "numba",
+        "promoted_status": "No (Baseline retained)",
+        "promoted_speedup": 1.0
+      },
+      {
+        "strategy": "Bandit Search",
+        "budget": 96,
+        "mean_search_s": 265.8932016799939,
+        "std_search_s": 35.71071293462724,
+        "best_found_latency_ms": 0.1852666665702903,
+        "best_found_std_ms": 0.0,
+        "mean_latency_ms": 0.1852666665702903,
+        "std_latency_ms": 0.0,
+        "best_found_speedup": 0.8700791661498081,
+        "sample_winner": "sobel_opencv_0001",
+        "sample_backend": "opencv",
+        "promoted_status": "No (Baseline retained)",
+        "promoted_speedup": 1.0
       },
       {
         "strategy": "Evolutionary Search",
         "budget": 96,
-        "mean_search_s": 301.442401699844,
-        "std_search_s": 41.21287237656178,
-        "mean_latency_ms": 0.28997333235262585,
-        "std_latency_ms": 0.046111367669315444,
-        "mean_speedup": 2.5648341502824556,
+        "mean_search_s": 494.42591170000304,
+        "std_search_s": 19.824111096997427,
+        "best_found_latency_ms": 0.28099000000414287,
+        "best_found_std_ms": 0.062044561041910785,
+        "mean_latency_ms": 0.28099000000414287,
+        "std_latency_ms": 0.062044561041910785,
+        "best_found_speedup": 0.601740434001007,
         "sample_winner": "sobel_numba_0083",
-        "sample_backend": "numba"
+        "sample_backend": "numba",
+        "promoted_status": "No (Baseline retained)",
+        "promoted_speedup": 1.0
       }
     ]
   }
