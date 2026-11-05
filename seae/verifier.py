@@ -45,6 +45,7 @@ class VerificationMetrics:
     applied_min_psnr: float
     candidate_kind: str
     rejection_reason: Optional[str] = None
+    fraction_exceeding_tol: float = 0.0
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -148,7 +149,7 @@ class Verifier:
     ) -> None:
         self.sandbox = sandbox or Sandbox(timeout_seconds=5.0, memory_limit_mb=1024.0)
         self.tolerances = tolerance_config or ToleranceConfig()
-        self._verification_cache: Dict[Tuple[str, str], VerificationReport] = {}
+        self._verification_cache: Dict[Tuple[Any, ...], VerificationReport] = {}
 
     def verify_candidate(
         self,
@@ -168,10 +169,26 @@ class Verifier:
         Returns:
             VerificationReport containing pass/fail status, per-test metrics, and logged thresholds.
         """
-        cache_key = (task_spec.kernel_name, code_str)
+        ref_fn = get_reference_kernel(task_spec.kernel_name)
+        try:
+            import inspect
+            ref_source = inspect.getsource(ref_fn)
+        except Exception:
+            ref_source = getattr(ref_fn, "__name__", str(ref_fn))
+        import hashlib
+        ref_source_hash = hashlib.sha256(ref_source.encode("utf-8")).hexdigest()[:16]
+
+        cache_key = (
+            task_spec.kernel_name,
+            code_str,
+            getattr(task_spec, "ksize", None),
+            getattr(task_spec, "sigma", None),
+            getattr(task_spec, "thresh", None),
+            getattr(task_spec, "maxval", None),
+            ref_source_hash,
+        )
         if cache_key in self._verification_cache:
             return self._verification_cache[cache_key]
-        ref_fn = get_reference_kernel(task_spec.kernel_name)
         is_pure_py = ("python_loops" in candidate_id) or ("def _py_" in code_str)
         test_inputs = generate_test_inputs(task_spec, max_dim=32 if is_pure_py else 48)
         results: List[Dict[str, Any]] = []
@@ -277,11 +294,51 @@ class Verifier:
             mean_err = float(np.mean(abs_diff))
             psnr = calculate_psnr(ref_out, cand_out)
 
-            passed = (max_err <= max_allowed) or (psnr >= min_psnr)
-            reason = None if passed else (
-                f"Error tolerance exceeded for {cand_kind}: max_err={max_err:.4f} > {max_allowed}, "
-                f"PSNR={psnr:.2f}dB < {min_psnr:.1f}dB"
-            )
+            total_pixels = abs_diff.size
+            num_exceeding = int(np.sum(abs_diff > max_allowed))
+            frac_exceeding = float(num_exceeding / total_pixels) if total_pixels > 0 else 0.0
+
+            psnr_ok = (psnr >= min_psnr)
+
+            if cand_kind == "quantized/integer":
+                # For quantized candidates:
+                # - Allow at most 0.1% (0.001) of pixels to exceed max_allowed
+                # - None to exceed 3x max_allowed
+                # - AND PSNR >= min_psnr
+                max_3x = 3.0 * max_allowed
+                pct_ok = (frac_exceeding <= 0.001)
+                none_3x_ok = (max_err <= max_3x)
+                passed = psnr_ok and pct_ok and none_3x_ok
+
+                if not passed:
+                    reasons = []
+                    if not psnr_ok:
+                        reasons.append(f"PSNR={psnr:.2f}dB < {min_psnr:.1f}dB")
+                    if not none_3x_ok:
+                        reasons.append(f"max_err={max_err:.4f} > 3x limit ({max_3x:.4f})")
+                    if not pct_ok:
+                        reasons.append(
+                            f"{frac_exceeding * 100:.3f}% pixels exceeded max_err limit "
+                            f"({num_exceeding}/{total_pixels} > 0.1%)"
+                        )
+                    reason = f"Tolerance failed for {cand_kind}: {'; '.join(reasons)}"
+                else:
+                    reason = None
+            else:
+                # For floating_point:
+                # Require BOTH max_abs_error <= limit AND PSNR >= limit
+                max_err_ok = (max_err <= max_allowed)
+                passed = max_err_ok and psnr_ok
+
+                if not passed:
+                    reasons = []
+                    if not max_err_ok:
+                        reasons.append(f"max_err={max_err:.4f} > {max_allowed}")
+                    if not psnr_ok:
+                        reasons.append(f"PSNR={psnr:.2f}dB < {min_psnr:.1f}dB")
+                    reason = f"Tolerance failed for {cand_kind}: {'; '.join(reasons)}"
+                else:
+                    reason = None
 
             test_metric = VerificationMetrics(
                 max_abs_error=max_err,
@@ -294,6 +351,7 @@ class Verifier:
                 applied_min_psnr=min_psnr,
                 candidate_kind=cand_kind,
                 rejection_reason=reason,
+                fraction_exceeding_tol=frac_exceeding,
             )
 
             results.append({
